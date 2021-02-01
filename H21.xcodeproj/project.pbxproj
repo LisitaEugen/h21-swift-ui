@@ -15,6 +15,7 @@
 		DE99F0A52590F26100FC99EC /* H21UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0A42590F26100FC99EC /* H21UITests.swift */; };
 		DE99F0BD25910F9100FC99EC /* AddHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0BC25910F9100FC99EC /* AddHabit.swift */; };
 		DE99F0C2259110B600FC99EC /* HabitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0C1259110B600FC99EC /* HabitDetails.swift */; };
+		DED4FA6C25BC914C001384FE /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4FA6B25BC914C001384FE /* Checkbox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		DE99F0A62590F26100FC99EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE99F0BC25910F9100FC99EC /* AddHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabit.swift; sourceTree = "<group>"; };
 		DE99F0C1259110B600FC99EC /* HabitDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetails.swift; sourceTree = "<group>"; };
+		DED4FA6B25BC914C001384FE /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		DE99F0862590F25D00FC99EC /* H21 */ = {
 			isa = PBXGroup;
 			children = (
+				DED4FA6A25BC911D001384FE /* Views */,
 				DE99F0B82590F71900FC99EC /* Model */,
 				DE99F0872590F25D00FC99EC /* H21App.swift */,
 				DE99F0892590F25D00FC99EC /* Habits.swift */,
@@ -142,6 +145,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DED4FA6A25BC911D001384FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DED4FA6B25BC914C001384FE /* Checkbox.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +288,7 @@
 				DE99F0882590F25D00FC99EC /* H21App.swift in Sources */,
 				DE99F0BD25910F9100FC99EC /* AddHabit.swift in Sources */,
 				DE99F0C2259110B600FC99EC /* HabitDetails.swift in Sources */,
+				DED4FA6C25BC914C001384FE /* Checkbox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,9 @@ import SwiftUI
 struct H21App: App {
     var body: some Scene {
         WindowGroup {
-            Habits_Screen()
+            NavigationView {
+                Habits_Screen()
+            }
         }
     }
 }

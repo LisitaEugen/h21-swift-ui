@@ -14,7 +14,11 @@ struct Habits_Screen: View {
     var body: some View {
         VStack {
             List(habits, id: \.self) { item in
-                HabitRow(toggle0: $toggle, toggle1: $toggle, toggle2: $toggle, toggle3: $toggle, toggle4: $toggle)
+                HabitRow(toggle0: $toggle, toggle1: $toggle, toggle2: $toggle, toggle3: $toggle, toggle4: $toggle, toggle5: $toggle)
+                NavigationLink(
+                    destination: HabitDetails_Screen(description: "", motivation: "")) {
+                    EmptyView()
+                }.hidden().frame(width: 0)
             }
         }
     }
@@ -26,15 +30,23 @@ struct HabitRow: View {
     @Binding var toggle2: Bool
     @Binding var toggle3: Bool
     @Binding var toggle4: Bool
-        
+    @Binding var toggle5: Bool
+    
     var body: some View {
         VStack{
             HStack {
-                Toggle("", isOn: $toggle0)
-                Toggle("", isOn: $toggle1)
-                Toggle("", isOn: $toggle2)
-                Toggle("", isOn: $toggle3)
-                Toggle("", isOn: $toggle4)
+                Checkbox(isChecked: toggle0)
+                    .padding()
+                Checkbox(isChecked: toggle1)
+                    .padding()
+                Checkbox(isChecked: toggle2)
+                    .padding()
+                Checkbox(isChecked: toggle3)
+                    .padding()
+                Checkbox(isChecked: toggle4)
+                    .padding()
+                Checkbox(isChecked: toggle5)
+                    .padding()
             }
             HStack {
                 Text("Loooooooooooooooooooooooooooong tiiiiiiitle")
@@ -42,8 +54,8 @@ struct HabitRow: View {
             }
         }
         .cornerRadius(10.0)
-        .padding()
-        .border(Color.black, width: 3)
+//        .padding()
+//        .border(Color.black, width: 3)
     }
 }
 
