@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct Habits_Screen: View {
-    let habits = Array(0...10)
+    @EnvironmentObject var habitsModel: HabitsModel
     @State var toggle = true
     
     var body: some View {
         VStack {
             Days()
-            List(habits, id: \.self) { item in
-                HabitRow(toggle0: $toggle, toggle1: $toggle, toggle2: $toggle, toggle3: $toggle, toggle4: $toggle, toggle5: $toggle)
+            List(habitsModel.habits, id: \.title) { habit in
+                HabitRow(toggle0: $toggle, toggle1: $toggle, toggle2: $toggle, toggle3: $toggle, toggle4: $toggle, toggle5: $toggle, title: habit.title)
                 NavigationLink(
                     destination: HabitDetails_Screen(description: "", motivation: "")) {
                     EmptyView()
@@ -32,6 +32,8 @@ struct HabitRow: View {
     @Binding var toggle3: Bool
     @Binding var toggle4: Bool
     @Binding var toggle5: Bool
+    
+    var title: String
     
     var body: some View {
         VStack{
@@ -50,7 +52,7 @@ struct HabitRow: View {
                     .padding()
             }
             HStack {
-                Text("Loooooooooooooooooooooooooooong tiiiiiiitle")
+                Text(title)
                 Text("50%")
             }
         }

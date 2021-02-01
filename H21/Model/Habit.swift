@@ -9,7 +9,17 @@
 import Foundation
 import CoreData
 
-//extension Habit {
+struct Habit {
+    let color: Int
+    let crectedAt: Date
+    let title: String
+    let motivation: String
+}
+extension Habit {
+    static var demoHabit: Habit  {
+        return Habit(color: 0, crectedAt: Date(), title: "Read a 📖 daily", motivation: "Reading is essential for those who seek to rise above the ordinary. – Jim Rohn")
+    }
+}
 //    enum Fields: String {
 //        case color
 //        case creationDate

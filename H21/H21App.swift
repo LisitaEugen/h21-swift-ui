@@ -12,7 +12,7 @@ struct H21App: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                Habits_Screen()
+                Habits_Screen().environmentObject(HabitsModel())
             }
         }
     }
