@@ -13,6 +13,7 @@ struct Habits_Screen: View {
     
     var body: some View {
         VStack {
+            Days()
             List(habits, id: \.self) { item in
                 HabitRow(toggle0: $toggle, toggle1: $toggle, toggle2: $toggle, toggle3: $toggle, toggle4: $toggle, toggle5: $toggle)
                 NavigationLink(
@@ -54,8 +55,32 @@ struct HabitRow: View {
             }
         }
         .cornerRadius(10.0)
-//        .padding()
-//        .border(Color.black, width: 3)
+        //        .padding()
+        //        .border(Color.black, width: 3)
+    }
+}
+
+
+struct Days: View {
+    typealias Day = (number: String, day: String)
+    var days: [Day] {
+        Date.currentRangeDates.map({ date in
+            let splittedDate = date.short().split(separator: " ")
+            return (number: String(splittedDate[0]), day: String(splittedDate[1]))
+        })
+    }
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(days, id: \.number) { (number, day) in
+                VStack {
+                    Text(day)
+                    Text(number)
+                        .fontWeight(.bold)
+                }
+                .padding()
+            }
+        }
     }
 }
 
