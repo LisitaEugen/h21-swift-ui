@@ -27,6 +27,7 @@ struct AddHabit_Screen: View {
             }
         }
         .listStyle(InsetGroupedListStyle())
+        .navigationTitle("New Habit")
     }
 }
 
