@@ -9,16 +9,14 @@ import SwiftUI
 
 struct Habits_Screen: View {
     @EnvironmentObject var habitsModel: HabitsModel
-    @State var toggle = true
     @State var addHabitPresented = false
     @State var newHabitData = Habit.Data()
     
     var body: some View {
         VStack {
             Days()
-                .background(Color.blue)
             List(habitsModel.habits, id: \.title) { habit in
-                HabitRow(toggle0: $toggle, toggle1: $toggle, toggle2: $toggle, toggle3: $toggle, toggle4: $toggle, toggle5: $toggle, title: habit.title)
+                HabitRow(habit: binding(for: habit))
                 NavigationLink(
                     destination: HabitDetails_Screen(habit: binding(for: habit))
                 ) {
@@ -58,40 +56,38 @@ struct Habits_Screen: View {
 }
 
 struct HabitRow: View {
-    @Binding var toggle0: Bool
-    @Binding var toggle1: Bool
-    @Binding var toggle2: Bool
-    @Binding var toggle3: Bool
-    @Binding var toggle4: Bool
-    @Binding var toggle5: Bool
-    
-    var title: String
-    
+    @Binding var habit: Habit
+        
     var body: some View {
         VStack{
             HStack {
-                Checkbox(isChecked: toggle0)
+                Checkbox(isChecked: habit.enabledAchievements[0])
                     .padding()
-                Checkbox(isChecked: toggle1)
+                Checkbox(isChecked: habit.enabledAchievements[1])
                     .padding()
-                Checkbox(isChecked: toggle2)
+                Checkbox(isChecked: habit.enabledAchievements[2])
                     .padding()
-                Checkbox(isChecked: toggle3)
+                Checkbox(isChecked: habit.enabledAchievements[3])
                     .padding()
-                Checkbox(isChecked: toggle4)
+                Checkbox(isChecked: habit.enabledAchievements[4])
                     .padding()
-                Checkbox(isChecked: toggle5)
+                Checkbox(isChecked: habit.enabledAchievements[5])
                     .padding()
             }
             HStack {
-                Text(title)
-                Text("50%")
+                Text(habit.title)
+                Spacer()
+                Text("\(habit.getProgressPercentage())%")
+                    .font(.headline)
             }
+            .padding()
         }
         .cornerRadius(10.0)
         //        .padding()
         //        .border(Color.black, width: 3)
     }
+    
+    
 }
 
 

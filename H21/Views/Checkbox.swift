@@ -13,7 +13,7 @@ struct Checkbox: View {
     var body: some View {
         Button(action: toggle){
             HStack{
-                Image(systemName: isChecked ? "checkmark.square": "square")
+                Image(systemName: isChecked ? "checkmark.circle.fill": "circle")
             }
         }
         .buttonStyle(BorderlessButtonStyle())

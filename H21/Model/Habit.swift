@@ -18,20 +18,24 @@ struct Habit: Identifiable, Codable  {
     var createdAt: Date = Date()
     var reminderTime: Date?
     var achievements: [Date] = []
+    var enabledAchievements: [Bool] = [false, true, false, true, false, true] {
+        didSet {
+            print(enabledAchievements)
+        }
+    }
 }
 
 extension Habit {
     static var demoHabit: Habit  {
-        return Habit(title: "Read a 📖 daily", motivation: "Reading is essential for those who seek to rise above the ordinary. – Jim Rohn")
+        var habit = Habit(title: "Read a 📖 daily", motivation: "Reading is essential for those who seek to rise above the ordinary. – Jim Rohn")
+        habit.achievements = [Date(), Date.yesterday, Date.yesterday.dayBefore]
+        return habit
     }
 }
 
 extension Habit {
     static var data: [Habit] {
         [
-            Habit.demoHabit,
-            Habit.demoHabit,
-            Habit.demoHabit,
             Habit.demoHabit,
         ]
     }
@@ -56,6 +60,20 @@ extension Habit {
         var reminderTime: Date = Date()
     }
     
+    struct Achievements {
+        func enabledAchievements(forHabit habit: Habit) -> [Bool]{
+            var enabledAchievements = [Bool]()
+            
+            for date in Date.currentRangeDates {
+                let enabled = habit.isAchievementEnabled(forDate: date)
+                enabledAchievements.append(enabled)
+            }
+            
+            return enabledAchievements
+        }
+        
+    }
+    
     var data: Data {
         return Data(title: title, motivation: motivation, color: color)
     }
@@ -64,6 +82,22 @@ extension Habit {
         self.title = data.title
         self.motivation = data.motivation
         self.color = data.color
+    }
+}
+
+extension Habit {
+    func isAchievementEnabled(forDate date: Date) -> Bool {
+        for achievement in achievements {
+            if achievement == date {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func getProgressPercentage() -> Int {
+        achievements.count > 0 ? Int((Double(achievements.count) / 21.0) * 100.0) : 0
     }
 }
 
