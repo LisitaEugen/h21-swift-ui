@@ -16,7 +16,7 @@ struct Habit: Identifiable, Codable  {
     var motivation: String
     var color: Color = .random
     var createdAt: Date = Date()
-    var remiderTime: Date?
+    var reminderTime: Date?
     var achievements: [Date] = []
 }
 
@@ -37,7 +37,7 @@ extension Habit {
     }
     
     static func new(from data: Data) -> Habit {
-        return Habit(title: data.title, motivation: data.motivation, color: data.color, remiderTime: data.reminderOn ? data.reminderTime: nil)
+        return Habit(title: data.title, motivation: data.motivation, color: data.color, reminderTime: data.reminderOn ? data.reminderTime: nil)
     }
 }
 

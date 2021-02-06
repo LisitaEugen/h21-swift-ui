@@ -20,7 +20,7 @@ struct Habits_Screen: View {
             List(habitsModel.habits, id: \.title) { habit in
                 HabitRow(toggle0: $toggle, toggle1: $toggle, toggle2: $toggle, toggle3: $toggle, toggle4: $toggle, toggle5: $toggle, title: habit.title)
                 NavigationLink(
-                    destination: HabitDetails_Screen(description: "", motivation: "")) {
+                    destination: HabitDetails_Screen(habit: habit)) {
                     EmptyView()
                 }.hidden().frame(width: 0)
             }
