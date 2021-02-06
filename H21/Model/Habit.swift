@@ -6,89 +6,55 @@
 //  Copyright © 2019 Evgheni Lisita. All rights reserved.
 //
 
-import Foundation
-import CoreData
+//import Foundation
+//import CoreData
+import SwiftUI
 
-struct Habit {
-    let color: Int
-    let crectedAt: Date
-    let title: String
-    let motivation: String
+struct Habit: Identifiable, Codable  {
+    var id: UUID = UUID()
+    var title: String
+    var motivation: String
+    var color: Color = .random
+    var createdAt: Date = Date()
+    var achievements: [Date] = []
 }
+
 extension Habit {
     static var demoHabit: Habit  {
-        return Habit(color: 0, crectedAt: Date(), title: "Read a 📖 daily", motivation: "Reading is essential for those who seek to rise above the ordinary. – Jim Rohn")
+        return Habit(title: "Read a 📖 daily", motivation: "Reading is essential for those who seek to rise above the ordinary. – Jim Rohn")
     }
 }
-//    enum Fields: String {
-//        case color
-//        case creationDate
-//        case title
-//        case motivation
-//        case firebaseId
-//    }
-//    
-//    convenience init(context: NSManagedObjectContext, dictionary: NSDictionary) {
-//        self.init(context: context)
-//        
-//        self.color = (dictionary[Fields.color.rawValue] as? Int32) ?? 0
-//        self.title = dictionary[Fields.title.rawValue] as? String
-//        self.motivation = dictionary[Fields.motivation.rawValue] as? String
-//        self.firebaseId = dictionary[Fields.firebaseId.rawValue] as? String
-//        let creationDateRow = dictionary[Fields.creationDate.rawValue] as? String
-//        self.creationDate = Date.date(fromString: creationDateRow ?? "", withFormat: FBCloud.firebaseDateFormat) ?? Date()
-//        
-//    }
-//    
-//    func isAchievementEnabled(forDate date: Date) -> Bool {
-//        if let achievements = self.achievements,
-//            let achievementsArray = achievements.array as? [Achievement] {
-//            for achievement in achievementsArray {
-//                if achievement.date == date {
-//                    return true
-//                }
-//            }
-//        }
-//        
-//        return false
-//    }
-//    
-//    func getProgressPercentage() -> Int {
-//        if let achievements = self.achievements,
-//            let achievementsArray = achievements.array as? [Achievement] {
-//            
-//            return Int((Double(achievementsArray.count) / 21.0) * 100.0)
-//        }
-//        
-//        return 0
-//    }
-//    
-//    
-//}
-//
-//extension NSManagedObject {
-//    
-//    
-//    func toDict() -> [String:Any] {
-//        let keys = Array(entity.attributesByName.keys)
-//        return dictionaryWithValues(forKeys:keys)
-//    }
-//    
-//    func toDictionary() -> [String: Any] {
-//        let dictionary = toDict()
-//        let transformedDict = dictionary.mapValues { value -> Any in
-//            if value is Date {
-//                let date = value as? Date
-//                
-//                return Date.getFormattedDate(date: date ?? Date(), format: FBCloud.firebaseDateFormat)
-//            }
-//            
-//            return value
-//        }
-//        
-//        
-//        return transformedDict
-//    }
-//}
 
+extension Habit {
+    static var data: [Habit] {
+        [
+            Habit.demoHabit,
+            Habit.demoHabit,
+            Habit.demoHabit,
+            Habit.demoHabit,
+        ]
+    }
+    
+    static func new(from data: Data) -> Habit {
+        return Habit(title: data.title, motivation: data.motivation, color: data.color)
+    }
+}
+
+extension Habit {
+    struct Data {
+        var title: String = ""
+        var motivation: String = ""
+        var color: Color = .random
+    }
+    
+    var data: Data {
+        return Data(title: title, motivation: motivation, color: color)
+    }
+    
+    mutating func update(from data: Data) {
+        self.title = data.title
+        self.motivation = data.motivation
+        self.color = data.color
+    }
+}
 

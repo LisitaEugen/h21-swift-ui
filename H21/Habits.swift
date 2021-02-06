@@ -10,16 +10,40 @@ import SwiftUI
 struct Habits_Screen: View {
     @EnvironmentObject var habitsModel: HabitsModel
     @State var toggle = true
+    @State var addHabitPresented = false
+    @State var newHabitData = Habit.Data()
     
     var body: some View {
         VStack {
             Days()
+                .background(Color.blue)
             List(habitsModel.habits, id: \.title) { habit in
                 HabitRow(toggle0: $toggle, toggle1: $toggle, toggle2: $toggle, toggle3: $toggle, toggle4: $toggle, toggle5: $toggle, title: habit.title)
                 NavigationLink(
                     destination: HabitDetails_Screen(description: "", motivation: "")) {
                     EmptyView()
                 }.hidden().frame(width: 0)
+            }
+            .background(Color.red)
+            Spacer()
+        }
+        .navigationBarTitle(Text("Habits"))
+        .navigationBarItems(trailing: Button(action: {
+            addHabitPresented = true
+        }) {
+            Image(systemName: "plus")
+        })
+        .sheet(isPresented: $addHabitPresented) {
+            NavigationView {
+                AddHabit_Screen(habitData: $newHabitData)
+                    .navigationBarItems(leading: Button("Dismiss") {
+                        addHabitPresented = false
+                    }, trailing: Button("Add") {
+                        let newHabit = Habit.new(from: newHabitData)
+                        habitsModel.habits.append(newHabit)
+                        
+                        addHabitPresented = false
+                    })
             }
         }
     }

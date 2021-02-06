@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DE519A7225C89FDF00F9E187 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A7125C89FDF00F9E187 /* Date.swift */; };
-		DE519A7B25C8A00A00F9E187 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A7625C8A00A00F9E187 /* Achievement.swift */; };
 		DE519A7D25C8A00A00F9E187 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A7825C8A00A00F9E187 /* Habit.swift */; };
-		DE519A7E25C8A00A00F9E187 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A7925C8A00A00F9E187 /* Reminder.swift */; };
 		DE519A8A25C8B3EC00F9E187 /* HabitsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A8925C8B3EC00F9E187 /* HabitsModel.swift */; };
+		DE8897BC25CEA59C00A6AC55 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8897BB25CEA59C00A6AC55 /* Color.swift */; };
 		DE99F0882590F25D00FC99EC /* H21App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0872590F25D00FC99EC /* H21App.swift */; };
 		DE99F08A2590F25D00FC99EC /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0892590F25D00FC99EC /* Habits.swift */; };
 		DE99F08C2590F26000FC99EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE99F08B2590F26000FC99EC /* Assets.xcassets */; };
@@ -42,10 +41,9 @@
 
 /* Begin PBXFileReference section */
 		DE519A7125C89FDF00F9E187 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		DE519A7625C8A00A00F9E187 /* Achievement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		DE519A7825C8A00A00F9E187 /* Habit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
-		DE519A7925C8A00A00F9E187 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		DE519A8925C8B3EC00F9E187 /* HabitsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsModel.swift; sourceTree = "<group>"; };
+		DE8897BB25CEA59C00A6AC55 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DE99F0842590F25D00FC99EC /* H21.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H21.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE99F0872590F25D00FC99EC /* H21App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H21App.swift; sourceTree = "<group>"; };
 		DE99F0892590F25D00FC99EC /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
@@ -92,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				DE519A7125C89FDF00F9E187 /* Date.swift */,
+				DE8897BB25CEA59C00A6AC55 /* Color.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -124,11 +123,11 @@
 				DE99F0B82590F71900FC99EC /* Model */,
 				DE99F0872590F25D00FC99EC /* H21App.swift */,
 				DE99F0892590F25D00FC99EC /* Habits.swift */,
+				DE99F0BC25910F9100FC99EC /* AddHabit.swift */,
+				DE99F0C1259110B600FC99EC /* HabitDetails.swift */,
 				DE99F08B2590F26000FC99EC /* Assets.xcassets */,
 				DE99F0902590F26000FC99EC /* Info.plist */,
 				DE99F08D2590F26000FC99EC /* Preview Content */,
-				DE99F0BC25910F9100FC99EC /* AddHabit.swift */,
-				DE99F0C1259110B600FC99EC /* HabitDetails.swift */,
 			);
 			path = H21;
 			sourceTree = "<group>";
@@ -162,9 +161,7 @@
 		DE99F0B82590F71900FC99EC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DE519A7625C8A00A00F9E187 /* Achievement.swift */,
 				DE519A7825C8A00A00F9E187 /* Habit.swift */,
-				DE519A7925C8A00A00F9E187 /* Reminder.swift */,
 				DE519A8925C8B3EC00F9E187 /* HabitsModel.swift */,
 			);
 			path = Model;
@@ -309,14 +306,13 @@
 			files = (
 				DE99F08A2590F25D00FC99EC /* Habits.swift in Sources */,
 				DE519A7225C89FDF00F9E187 /* Date.swift in Sources */,
+				DE8897BC25CEA59C00A6AC55 /* Color.swift in Sources */,
 				DE519A8A25C8B3EC00F9E187 /* HabitsModel.swift in Sources */,
-				DE519A7B25C8A00A00F9E187 /* Achievement.swift in Sources */,
 				DE99F0882590F25D00FC99EC /* H21App.swift in Sources */,
 				DE99F0BD25910F9100FC99EC /* AddHabit.swift in Sources */,
 				DE99F0C2259110B600FC99EC /* HabitDetails.swift in Sources */,
 				DE519A7D25C8A00A00F9E187 /* Habit.swift in Sources */,
 				DED4FA6C25BC914C001384FE /* Checkbox.swift in Sources */,
-				DE519A7E25C8A00A00F9E187 /* Reminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

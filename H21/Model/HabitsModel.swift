@@ -9,5 +9,5 @@ import Foundation
 
 
 class HabitsModel: ObservableObject {
-    @Published var habits: [Habit] = [Habit.demoHabit]
+    @Published var habits: [Habit] = Habit.data
 }
