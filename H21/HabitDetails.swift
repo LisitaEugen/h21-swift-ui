@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct HabitDetails_Screen: View {
-    var habit: Habit
+    @Binding var habit: Habit
+    @State private var data: Habit.Data = Habit.Data()
+    @State private var isPresented: Bool = false
     
     var body: some View {
         List {
@@ -35,6 +37,22 @@ struct HabitDetails_Screen: View {
             
         }
         .listStyle(InsetGroupedListStyle())
+        .navigationBarItems(trailing: Button("Edit") {
+            isPresented = true
+            data = habit.data
+        })
+        .fullScreenCover(isPresented: $isPresented) {
+            NavigationView {
+                AddHabit_Screen(habitData: $data)
+                    .navigationTitle("Edit Habit")
+                    .navigationBarItems(leading: Button("Cancel") {
+                        isPresented = false
+                    }, trailing: Button("Done") {
+                        isPresented = false
+                        habit.update(from: data)
+                    })
+            }
+        }
     }
 }
 
@@ -43,6 +61,6 @@ struct HabitDetails_Previews: PreviewProvider {
     static var previews: some View {
         var habit = Habit(title: "Title", motivation: "Motivation", color: .random)
         habit.reminderTime = Date()
-        return HabitDetails_Screen(habit: habit)
+        return HabitDetails_Screen(habit: .constant(habit))
     }
 }

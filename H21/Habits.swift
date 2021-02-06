@@ -20,7 +20,8 @@ struct Habits_Screen: View {
             List(habitsModel.habits, id: \.title) { habit in
                 HabitRow(toggle0: $toggle, toggle1: $toggle, toggle2: $toggle, toggle3: $toggle, toggle4: $toggle, toggle5: $toggle, title: habit.title)
                 NavigationLink(
-                    destination: HabitDetails_Screen(habit: habit)) {
+                    destination: HabitDetails_Screen(habit: binding(for: habit))
+                ) {
                     EmptyView()
                 }.hidden().frame(width: 0)
             }
@@ -46,6 +47,13 @@ struct Habits_Screen: View {
                     })
             }
         }
+    }
+    
+    private func binding(for habit: Habit) -> Binding<Habit> {
+        guard let habitIndex = habitsModel.habits.firstIndex(where: {$0.id == habit.id}) else {
+            fatalError("Something went wrong!")
+        }
+        return $habitsModel.habits[habitIndex]
     }
 }
 
