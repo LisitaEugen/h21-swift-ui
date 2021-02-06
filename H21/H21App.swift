@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct H21App: App {
-    @ObservedObject var viewModel: HabitsModel
+    @ObservedObject var viewModel: HabitsViewModel
     
     init() {
-        ServiceLocator.shared.addService(service: HabitPersister() as Persister)
-        viewModel = HabitsModel()
+        ServiceLocator.shared.addService(service: HabitFilePersister() as Persister)
+        viewModel = HabitsViewModel()
     }
     
     var body: some Scene {

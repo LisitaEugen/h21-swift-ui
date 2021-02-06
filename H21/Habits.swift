@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Habits_Screen: View {
-    @EnvironmentObject var habitsModel: HabitsModel
+    @EnvironmentObject var habitsModel: HabitsViewModel
     @State var addHabitPresented = false
     @State var newHabitData = Habit.Data()
     @Environment(\.scenePhase) private var scenePhase

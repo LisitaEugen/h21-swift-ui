@@ -1,36 +1,18 @@
 //
-//  HabitsModel.swift
+//  HabitFilePersister.swift
 //  H21
 //
-//  Created by Evgheni Lisita on 01.02.21.
+//  Created by Evgheni Lisita on 06.02.21.
 //
 
 import Foundation
-
-
-class HabitsModel: ObservableObject {
-    @Published var habits: [Habit] = Habit.data
-    var persister: Persister? = ServiceLocator.shared.getService()
-    
-    
-    
-    func loadHabits() {
-        persister?.load() { habits in
-            self.habits = habits
-        }
-    }
-    
-    func saveHabits() {
-        persister?.save(self.habits)
-    }
-}
 
 protocol Persister {
     func load(_ completion: @escaping ([Habit]) -> Void)
     func save(_ habits: [Habit])
 }
 
-class HabitPersister: Persister {
+class HabitFilePersister: Persister {
     private static var documenrFolder: URL {
         do {
             return try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -44,7 +26,7 @@ class HabitPersister: Persister {
     
     func load(_ completion: @escaping ([Habit]) -> Void) {
         DispatchQueue.global(qos: .background).async {
-            guard let data = try? Data(contentsOf: HabitPersister.fileUrl) else {
+            guard let data = try? Data(contentsOf: HabitFilePersister.fileUrl) else {
                 return
             }
             guard let habits = try? JSONDecoder().decode([Habit].self, from: data) else {
@@ -63,7 +45,7 @@ class HabitPersister: Persister {
             }
             
             do {
-                let outFile = HabitPersister.fileUrl
+                let outFile = HabitFilePersister.fileUrl
                 try data.write(to: outFile)
             } catch {
                 fatalError("Cannot persist")
@@ -73,23 +55,3 @@ class HabitPersister: Persister {
 }
 
 
-final class ServiceLocator {
-    private lazy var services: Dictionary<String, Any> = [:]
-    
-    private func typeName(_ some: Any) -> String {
-        return (some is Any.Type) ?
-            "\(some)" : "\(type(of: some))"
-    }
-    
-    func addService<T>(service: T) {
-        let key = typeName(T.self)
-        services[key] = service
-    }
-    
-    func getService<T>() -> T? {
-        let key = typeName(T.self)
-        return services[key] as? T
-    }
-    
-    public static let shared = ServiceLocator()
-}
