@@ -9,8 +9,7 @@ import SwiftUI
 
 struct AddHabit_Screen: View {
     @Binding var habitData: Habit.Data
-    @State var reminderOn = false
-
+        
     var body: some View {
         List {
             Section(header: Text("Habit info")) {
@@ -20,7 +19,11 @@ struct AddHabit_Screen: View {
                     .accessibilityLabel(Text("Color picker"))
             }
             Section(header: Text("Reminder")) {
-                Toggle("Reminde me daily", isOn: $reminderOn)
+                Toggle("Reminde me daily", isOn: $habitData.reminderOn)
+                if habitData.reminderOn {
+                    DatePicker("at", selection: $habitData.reminderTime, displayedComponents: .hourAndMinute)
+                }
+                
             }
         }
         .listStyle(InsetGroupedListStyle())
