@@ -61,7 +61,7 @@ extension Habit {
     }
     
     struct Achievements {
-        func enabledAchievements(forHabit habit: Habit) -> [Bool]{
+        static func enabledAchievements(forHabit habit: Habit) -> [Bool]{
             var enabledAchievements = [Bool]()
             
             for date in Date.currentRangeDates {

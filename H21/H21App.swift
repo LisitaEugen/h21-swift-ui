@@ -9,10 +9,18 @@ import SwiftUI
 
 @main
 struct H21App: App {
+    @ObservedObject var viewModel = HabitsModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                Habits_Screen().environmentObject(HabitsModel())
+                Habits_Screen() {
+                    viewModel.save()
+                }
+                .environmentObject(viewModel)
+            }
+            .onAppear() {
+                viewModel.load()
             }
         }
     }

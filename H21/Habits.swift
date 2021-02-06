@@ -11,6 +11,8 @@ struct Habits_Screen: View {
     @EnvironmentObject var habitsModel: HabitsModel
     @State var addHabitPresented = false
     @State var newHabitData = Habit.Data()
+    @Environment(\.scenePhase) private var scenePhase
+    let saveAction: () -> Void
     
     var body: some View {
         VStack {
@@ -45,6 +47,9 @@ struct Habits_Screen: View {
                     })
             }
         }
+        .onChange(of: scenePhase) { phase in
+            saveAction()
+        }
     }
     
     private func binding(for habit: Habit) -> Binding<Habit> {
@@ -57,21 +62,21 @@ struct Habits_Screen: View {
 
 struct HabitRow: View {
     @Binding var habit: Habit
-        
+    
     var body: some View {
         VStack{
             HStack {
-                Checkbox(isChecked: habit.enabledAchievements[0])
+                Checkbox(isChecked: $habit.enabledAchievements[0])
                     .padding()
-                Checkbox(isChecked: habit.enabledAchievements[1])
+                Checkbox(isChecked: $habit.enabledAchievements[1])
                     .padding()
-                Checkbox(isChecked: habit.enabledAchievements[2])
+                Checkbox(isChecked: $habit.enabledAchievements[2])
                     .padding()
-                Checkbox(isChecked: habit.enabledAchievements[3])
+                Checkbox(isChecked: $habit.enabledAchievements[3])
                     .padding()
-                Checkbox(isChecked: habit.enabledAchievements[4])
+                Checkbox(isChecked: $habit.enabledAchievements[4])
                     .padding()
-                Checkbox(isChecked: habit.enabledAchievements[5])
+                Checkbox(isChecked: $habit.enabledAchievements[5])
                     .padding()
             }
             HStack {
@@ -83,11 +88,7 @@ struct HabitRow: View {
             .padding()
         }
         .cornerRadius(10.0)
-        //        .padding()
-        //        .border(Color.black, width: 3)
     }
-    
-    
 }
 
 
@@ -119,7 +120,7 @@ struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            Habits_Screen()
+            Habits_Screen() {}
         }
     }
 }
