@@ -20,12 +20,12 @@ struct H21App: App {
         WindowGroup {
             NavigationView {
                 Habits_Screen() {
-                    viewModel.save()
+                    viewModel.saveHabits()
                 }
                 .environmentObject(viewModel)
             }
             .onAppear() {
-                viewModel.load()
+                viewModel.loadHabits()
             }
         }
     }

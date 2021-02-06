@@ -8,10 +8,29 @@
 import Foundation
 
 
-class HabitsModel: ObservableObject, Persister {
+class HabitsModel: ObservableObject {
     @Published var habits: [Habit] = Habit.data
     var persister: Persister? = ServiceLocator.shared.getService()
     
+    
+    
+    func loadHabits() {
+        persister?.load() { habits in
+            self.habits = habits
+        }
+    }
+    
+    func saveHabits() {
+        persister?.save(self.habits)
+    }
+}
+
+protocol Persister {
+    func load(_ completion: @escaping ([Habit]) -> Void)
+    func save(_ habits: [Habit])
+}
+
+class HabitPersister: Persister {
     private static var documenrFolder: URL {
         do {
             return try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -23,59 +42,33 @@ class HabitsModel: ObservableObject, Persister {
         return documenrFolder.appendingPathComponent("scrums.data")
     }
     
-    func load() {
-        persister?.load()
-        DispatchQueue.global(qos: .background).async { [weak self] in
-            guard let data = try? Data(contentsOf: HabitsModel.fileUrl) else {
-                #if DEBUG
-                DispatchQueue.main.async {
-                    self?.habits = Habit.data
-                }
-                #endif
+    func load(_ completion: @escaping ([Habit]) -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            guard let data = try? Data(contentsOf: HabitPersister.fileUrl) else {
                 return
             }
             guard let habits = try? JSONDecoder().decode([Habit].self, from: data) else {
                 fatalError("Can't decode saved scrum data.")
             }
             DispatchQueue.main.async {
-                self?.habits = habits
+                completion(habits)
             }
         }
     }
     
-    func save() {
-        persister?.save()
-        DispatchQueue.global(qos: .background).async { [weak self] in
-            guard let habits = self?.habits else {
-                fatalError("Wrong self")
-            }
-            
+    func save(_ habits: [Habit]) {
+        DispatchQueue.global(qos: .background).async {
             guard let data = try? JSONEncoder().encode(habits) else {
                 fatalError("Error envcoding data")
             }
             
             do {
-                let outFile = HabitsModel.fileUrl
+                let outFile = HabitPersister.fileUrl
                 try data.write(to: outFile)
             } catch {
                 fatalError("Cannot persist")
             }
         }
-    }
-}
-
-protocol Persister {
-    func load()
-    func save()
-}
-
-class HabitPersister: Persister {
-    func load() {
-        print("Load")
-    }
-    
-    func save() {
-        print("Save")
     }
 }
 
