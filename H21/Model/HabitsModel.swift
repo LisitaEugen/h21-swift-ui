@@ -8,8 +8,9 @@
 import Foundation
 
 
-class HabitsModel: ObservableObject {
+class HabitsModel: ObservableObject, Persister {
     @Published var habits: [Habit] = Habit.data
+    var persister: Persister? = ServiceLocator.shared.getService()
     
     private static var documenrFolder: URL {
         do {
@@ -23,6 +24,7 @@ class HabitsModel: ObservableObject {
     }
     
     func load() {
+        persister?.load()
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let data = try? Data(contentsOf: HabitsModel.fileUrl) else {
                 #if DEBUG
@@ -42,12 +44,13 @@ class HabitsModel: ObservableObject {
     }
     
     func save() {
+        persister?.save()
         DispatchQueue.global(qos: .background).async { [weak self] in
-            guard let scrums = self?.habits else {
+            guard let habits = self?.habits else {
                 fatalError("Wrong self")
             }
             
-            guard let data = try? JSONEncoder().encode(scrums) else {
+            guard let data = try? JSONEncoder().encode(habits) else {
                 fatalError("Error envcoding data")
             }
             
@@ -59,4 +62,41 @@ class HabitsModel: ObservableObject {
             }
         }
     }
+}
+
+protocol Persister {
+    func load()
+    func save()
+}
+
+class HabitPersister: Persister {
+    func load() {
+        print("Load")
+    }
+    
+    func save() {
+        print("Save")
+    }
+}
+
+
+final class ServiceLocator {
+    private lazy var services: Dictionary<String, Any> = [:]
+    
+    private func typeName(_ some: Any) -> String {
+        return (some is Any.Type) ?
+            "\(some)" : "\(type(of: some))"
+    }
+    
+    func addService<T>(service: T) {
+        let key = typeName(T.self)
+        services[key] = service
+    }
+    
+    func getService<T>() -> T? {
+        let key = typeName(T.self)
+        return services[key] as? T
+    }
+    
+    public static let shared = ServiceLocator()
 }
