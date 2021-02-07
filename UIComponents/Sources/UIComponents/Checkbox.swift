@@ -9,16 +9,16 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public struct Checkbox: View {
-    var isChecked: Binding<Bool>
+    @Binding var isChecked: Bool
     
     public init(isChecked: Binding<Bool>) {
-        self.isChecked = isChecked
+        self._isChecked = isChecked
     }
     
     public var body: some View {
-        Button(action: { isChecked.wrappedValue.toggle() }){
+        Button(action: { isChecked.toggle() }){
             HStack{
-                Image(systemName: self.isChecked.wrappedValue ? "checkmark.circle.fill": "circle")
+                Image(systemName: self.isChecked ? "checkmark.circle.fill": "circle")
             }
         }
         .buttonStyle(BorderlessButtonStyle())
