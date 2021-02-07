@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIComponents
 
 struct Habits_Screen: View {
     @EnvironmentObject var habitsModel: HabitsViewModel
