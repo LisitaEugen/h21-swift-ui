@@ -12,7 +12,7 @@ struct H21App: App {
     @ObservedObject var viewModel: HabitsViewModel
     
     init() {
-        ServiceLocator.shared.addService(service: HabitFilePersister() as Persister)
+        ServiceLocator.shared.addService(service: FilePersister() as Persister)
         viewModel = HabitsViewModel()
     }
     

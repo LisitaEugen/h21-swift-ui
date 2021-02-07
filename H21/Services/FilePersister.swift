@@ -9,7 +9,7 @@ import Foundation
 
 protocol Persister {
     func load<T: Codable>(_ completion: @escaping ([T]) -> Void)
-    func save<T: Codable>(_ habits: [T])
+    func save<T: Codable>(_ objects: [T])
 }
 
 class FilePersister: Persister {
@@ -21,7 +21,7 @@ class FilePersister: Persister {
         }
     }
     private static var fileUrl: URL {
-        return documenrFolder.appendingPathComponent("scrums.data")
+        return documenrFolder.appendingPathComponent("persisted.data")
     }
     
     func load<T: Codable>(_ completion: @escaping ([T]) -> Void) {
@@ -29,18 +29,18 @@ class FilePersister: Persister {
             guard let data = try? Data(contentsOf: FilePersister.fileUrl) else {
                 return
             }
-            guard let habits = try? JSONDecoder().decode([T].self, from: data) else {
+            guard let objects = try? JSONDecoder().decode([T].self, from: data) else {
                 fatalError("Can't decode saved scrum data.")
             }
             DispatchQueue.main.async {
-                completion(habits)
+                completion(objects)
             }
         }
     }
     
-    func save<T: Codable>(_ habits: [T]) {
+    func save<T: Codable>(_ objects: [T]) {
         DispatchQueue.global(qos: .background).async {
-            guard let data = try? JSONEncoder().encode(habits) else {
+            guard let data = try? JSONEncoder().encode(objects) else {
                 fatalError("Error envcoding data")
             }
             
