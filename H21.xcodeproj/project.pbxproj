@@ -14,7 +14,6 @@
 		DE75A99025D0061C00722166 /* UIComponents in Frameworks */ = {isa = PBXBuildFile; productRef = DE75A98F25D0061C00722166 /* UIComponents */; };
 		DE8897BC25CEA59C00A6AC55 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8897BB25CEA59C00A6AC55 /* Color.swift */; };
 		DE8897CA25CF433900A6AC55 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8897C925CF433900A6AC55 /* ServiceLocator.swift */; };
-		DE8897D025CF440900A6AC55 /* FilePersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8897CF25CF440900A6AC55 /* FilePersister.swift */; };
 		DE99F0882590F25D00FC99EC /* H21App.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0872590F25D00FC99EC /* H21App.swift */; };
 		DE99F08A2590F25D00FC99EC /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0892590F25D00FC99EC /* Habits.swift */; };
 		DE99F08C2590F26000FC99EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE99F08B2590F26000FC99EC /* Assets.xcassets */; };
@@ -50,7 +49,6 @@
 		DE75A98825D005E000722166 /* UIComponents */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UIComponents; sourceTree = "<group>"; };
 		DE8897BB25CEA59C00A6AC55 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DE8897C925CF433900A6AC55 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
-		DE8897CF25CF440900A6AC55 /* FilePersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePersister.swift; sourceTree = "<group>"; };
 		DE99F0842590F25D00FC99EC /* H21.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = H21.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE99F0872590F25D00FC99EC /* H21App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H21App.swift; sourceTree = "<group>"; };
 		DE99F0892590F25D00FC99EC /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
@@ -94,6 +92,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE443D5B25D0376F001B4318 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DE99F0892590F25D00FC99EC /* Habits.swift */,
+				DE99F0BC25910F9100FC99EC /* AddHabit.swift */,
+				DE99F0C1259110B600FC99EC /* HabitDetails.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		DE519A7025C89FBC00F9E187 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,14 +117,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DE8897CE25CF43EF00A6AC55 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				DE8897CF25CF440900A6AC55 /* FilePersister.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		DE99F07B2590F25D00FC99EC = {
@@ -145,14 +145,10 @@
 		DE99F0862590F25D00FC99EC /* H21 */ = {
 			isa = PBXGroup;
 			children = (
-				DE8897CE25CF43EF00A6AC55 /* Services */,
 				DE519A7025C89FBC00F9E187 /* Utils */,
-				DED4FA6A25BC911D001384FE /* Views */,
 				DE99F0B82590F71900FC99EC /* Model */,
+				DE443D5B25D0376F001B4318 /* Screens */,
 				DE99F0872590F25D00FC99EC /* H21App.swift */,
-				DE99F0892590F25D00FC99EC /* Habits.swift */,
-				DE99F0BC25910F9100FC99EC /* AddHabit.swift */,
-				DE99F0C1259110B600FC99EC /* HabitDetails.swift */,
 				DE99F08B2590F26000FC99EC /* Assets.xcassets */,
 				DE99F0902590F26000FC99EC /* Info.plist */,
 				DE99F08D2590F26000FC99EC /* Preview Content */,
@@ -193,13 +189,6 @@
 				DE519A8925C8B3EC00F9E187 /* HabitsViewModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		DED4FA6A25BC911D001384FE /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,7 +333,6 @@
 				DE8897CA25CF433900A6AC55 /* ServiceLocator.swift in Sources */,
 				DE99F0C2259110B600FC99EC /* HabitDetails.swift in Sources */,
 				DE519A7D25C8A00A00F9E187 /* Habit.swift in Sources */,
-				DE8897D025CF440900A6AC55 /* FilePersister.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
