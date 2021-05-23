@@ -1,13 +1,9 @@
 //
-//  Habit.swift
+//  HabitsModel.swift
 //  H21
 //
-//  Created by Evgheni Lisita on 17.09.19.
-//  Copyright © 2019 Evgheni Lisita. All rights reserved.
+//  Created by Evgheni Lisita on 01.02.21.
 //
-
-//import Foundation
-//import CoreData
 import SwiftUI
 
 struct Habit: Identifiable, Codable  {
@@ -20,15 +16,18 @@ struct Habit: Identifiable, Codable  {
     var achievements: [Date] = []
     var enabledAchievements: [Bool] = [false, true, false, true, false, true] {
         didSet {
-            print(enabledAchievements)
+            handleChanges(for: enabledAchievements)
         }
     }
 }
 
+// init enabledAchievements by iterationg throug current interval and matching with acievements array
+// add/remove achievements by listening on changes of current enabledAchievements
+
 extension Habit {
     static var demoHabit: Habit  {
         var habit = Habit(title: "Read a 📖 daily", motivation: "Reading is essential for those who seek to rise above the ordinary. – Jim Rohn")
-        habit.achievements = [Date(), Date.yesterday, Date.yesterday.dayBefore]
+        habit.achievements = [Date(), Date.yesterday, Date.yesterday.dayBefore, Date().previousMonth]
         return habit
     }
 }
@@ -98,6 +97,35 @@ extension Habit {
     
     func getProgressPercentage() -> Int {
         achievements.count > 0 ? Int((Double(achievements.count) / 21.0) * 100.0) : 0
+    }
+    
+    mutating func handleChanges(for enabledAchievements: [Bool]) {
+        let dates = Date.currentRangeDates
+        
+        for (index, enabled) in enabledAchievements.enumerated() {
+            if enabled {
+                addAchievement(for: dates[index])
+            } else {
+                removeAchievement(for: dates[index])
+            }
+        }
+        print(achievements)
+    }
+    
+    mutating func addAchievement(for date: Date) {
+        guard !achievements.contains(date) else {
+            return
+        }
+        
+        achievements.append(date)
+    }
+    
+    mutating func removeAchievement(for date: Date) {
+        guard let indexForRemoval = achievements.firstIndex(of: date) else {
+            return
+        }
+        
+        achievements.remove(at: indexForRemoval)
     }
 }
 
