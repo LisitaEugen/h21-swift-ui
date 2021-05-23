@@ -66,20 +66,19 @@ struct HabitDetails_Screen: View {
         }
     }
     
-    private func dayView(for date: Date) -> some View {
-        let isAchievement =   habit.achievements.contains(date)
+    private func dayView(for calendarDate: Date) -> some View {
+        let isAchievement = habit.achievements.filter {
+            achievementDate in
+            achievementDate.isSameDay(as: calendarDate)
+        }.count != 0
         
-        print(date)
-        print(isAchievement)
-        
-        return Text("30")
+        return Text("11")
             .hidden()
             .padding()
-            .background(habit.color)
+            .background(isAchievement ? habit.color : Color.white)
             .clipShape(Circle())
-            //                    .padding(.vertical, 4)
             .overlay(
-                Text(String(self.calendar.component(.day, from: date)))
+                Text(String(self.calendar.component(.day, from: calendarDate)))
             )
     }
 }

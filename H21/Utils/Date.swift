@@ -65,4 +65,17 @@ extension Date {
         return String(Int64(Date().timeIntervalSince1970 * 1000))
     }
     
+    func isSameDay(as date: Date) -> Bool {
+        let order = Calendar.current.compare(self, to: date, toGranularity: .day)
+
+        switch order {
+        case .orderedDescending:
+            return false
+        case .orderedAscending:
+            return false
+        case .orderedSame:
+            return true
+        }
+    }
+    
 }
