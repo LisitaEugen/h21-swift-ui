@@ -22,6 +22,7 @@
 		DE99F0BD25910F9100FC99EC /* AddHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0BC25910F9100FC99EC /* AddHabit.swift */; };
 		DE99F0C2259110B600FC99EC /* HabitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0C1259110B600FC99EC /* HabitDetails.swift */; };
 		DED4FA6C25BC914C001384FE /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4FA6B25BC914C001384FE /* Checkbox.swift */; };
+		EA618796265A8C5C0046A22D /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA618795265A8C5C0046A22D /* Calendar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		DE99F0BC25910F9100FC99EC /* AddHabit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabit.swift; sourceTree = "<group>"; };
 		DE99F0C1259110B600FC99EC /* HabitDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetails.swift; sourceTree = "<group>"; };
 		DED4FA6B25BC914C001384FE /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		EA618795265A8C5C0046A22D /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				DED4FA6B25BC914C001384FE /* Checkbox.swift */,
+				EA618795265A8C5C0046A22D /* Calendar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				DE99F0882590F25D00FC99EC /* H21App.swift in Sources */,
 				DE99F0BD25910F9100FC99EC /* AddHabit.swift in Sources */,
 				DE8897CA25CF433900A6AC55 /* ServiceLocator.swift in Sources */,
+				EA618796265A8C5C0046A22D /* Calendar.swift in Sources */,
 				DE99F0C2259110B600FC99EC /* HabitDetails.swift in Sources */,
 				DE519A7D25C8A00A00F9E187 /* Habit.swift in Sources */,
 				DED4FA6C25BC914C001384FE /* Checkbox.swift in Sources */,

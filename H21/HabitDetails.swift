@@ -11,32 +11,43 @@ struct HabitDetails_Screen: View {
     @Binding var habit: Habit
     @State private var data: Habit.Data = Habit.Data()
     @State private var isPresented: Bool = false
+    @Environment(\.calendar) var calendar
+    
+    private var year: DateInterval {
+        calendar.dateInterval(of: .year, for: Date())!
+    }
     
     var body: some View {
-        List {
-            Section(header: Text("Habit info")) {
-                Label(habit.title, systemImage: "signature")
-                Label(habit.motivation, systemImage: "sunrise")
-                HStack {
-                    Label("Color", systemImage: "paintpalette")
-                    Spacer()
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(habit.color)
-                }
-            }
-            if let reminderTime = habit.reminderTime {
-                Section(header: Text("Reminder")) {
+        VStack {
+            List {
+                Section(header: Text("Habit info")) {
+                    Label(habit.title, systemImage: "signature")
+                    Label(habit.motivation, systemImage: "sunrise")
                     HStack {
-                        Label("Reminde me daily at", systemImage: "alarm")
+                        Label("Color", systemImage: "paintpalette")
                         Spacer()
-                        Text(Date.getFormattedDate(date: reminderTime, format: "HH:MM"))
-                            .font(.headline)
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(habit.color)
                     }
                 }
+                if let reminderTime = habit.reminderTime {
+                    Section(header: Text("Reminder")) {
+                        HStack {
+                            Label("Reminde me daily at", systemImage: "alarm")
+                            Spacer()
+                            Text(Date.getFormattedDate(date: reminderTime, format: "HH:MM"))
+                                .font(.headline)
+                        }
+                    }
+                }
+                
+                Section(header: Text("History")) {
+                    MonthView(month: Date(), content: dayView)
+                }
             }
-            
+            .listStyle(InsetGroupedListStyle())
         }
-        .listStyle(InsetGroupedListStyle())
+        
         .navigationBarItems(trailing: Button("Edit") {
             isPresented = true
             data = habit.data
@@ -53,6 +64,23 @@ struct HabitDetails_Screen: View {
                     })
             }
         }
+    }
+    
+    private func dayView(for date: Date) -> some View {
+        let isAchievement =   habit.achievements.contains(date)
+        
+        print(date)
+        print(isAchievement)
+        
+        return Text("30")
+            .hidden()
+            .padding()
+            .background(habit.color)
+            .clipShape(Circle())
+            //                    .padding(.vertical, 4)
+            .overlay(
+                Text(String(self.calendar.component(.day, from: date)))
+            )
     }
 }
 
