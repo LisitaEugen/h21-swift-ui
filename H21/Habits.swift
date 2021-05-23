@@ -85,6 +85,7 @@ struct HabitRow: View {
                 Spacer()
                 Image(systemName: habitsModel.progressIcon(for: habit))
                     .foregroundColor(habit.color)
+                    .font(.system(size: 25, weight: .bold))
             }
             .padding()
         }
