@@ -62,28 +62,29 @@ struct Habits_Screen: View {
 
 struct HabitRow: View {
     @Binding var habit: Habit
+    @EnvironmentObject var habitsModel: HabitsViewModel
     
     var body: some View {
         VStack{
             HStack {
-                Checkbox(isChecked: $habit.enabledAchievements[0])
+                Checkbox(isChecked: $habit.enabledAchievements[0], color: habit.color)
                     .padding()
-                Checkbox(isChecked: $habit.enabledAchievements[1])
+                Checkbox(isChecked: $habit.enabledAchievements[1], color: habit.color)
                     .padding()
-                Checkbox(isChecked: $habit.enabledAchievements[2])
+                Checkbox(isChecked: $habit.enabledAchievements[2], color: habit.color)
                     .padding()
-                Checkbox(isChecked: $habit.enabledAchievements[3])
+                Checkbox(isChecked: $habit.enabledAchievements[3], color: habit.color)
                     .padding()
-                Checkbox(isChecked: $habit.enabledAchievements[4])
+                Checkbox(isChecked: $habit.enabledAchievements[4], color: habit.color)
                     .padding()
-                Checkbox(isChecked: $habit.enabledAchievements[5])
+                Checkbox(isChecked: $habit.enabledAchievements[5], color: habit.color)
                     .padding()
             }
             HStack {
                 Text(habit.title)
                 Spacer()
-                Text("\(habit.getProgressPercentage())%")
-                    .font(.headline)
+                Image(systemName: habitsModel.progressIcon(for: habit))
+                    .foregroundColor(habit.color)
             }
             .padding()
         }

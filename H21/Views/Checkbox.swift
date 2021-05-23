@@ -9,11 +9,13 @@ import SwiftUI
 
 struct Checkbox: View {
     @Binding var isChecked: Bool
+    var color: Color
     func toggle() { isChecked = !isChecked }
     var body: some View {
         Button(action: toggle){
             HStack{
                 Image(systemName: isChecked ? "checkmark.circle.fill": "circle")
+                    .foregroundColor(color)
             }
         }
         .buttonStyle(BorderlessButtonStyle())
@@ -23,8 +25,8 @@ struct Checkbox: View {
 struct Checkbox_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            Checkbox(isChecked: .constant(false))
-            Checkbox(isChecked: .constant(true))
+            Checkbox(isChecked: .constant(false), color: Color.blue)
+            Checkbox(isChecked: .constant(true), color: Color.blue)
         }
     }
 }
