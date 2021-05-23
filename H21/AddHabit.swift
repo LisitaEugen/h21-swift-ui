@@ -19,7 +19,7 @@ struct AddHabit_Screen: View {
                     .accessibilityLabel(Text("Color picker"))
             }
             Section(header: Text("Reminder")) {
-                Toggle("Reminde me daily", isOn: $habitData.reminderOn)
+                Toggle("Remind me daily", isOn: $habitData.reminderOn)
                 if habitData.reminderOn {
                     DatePicker("at", selection: $habitData.reminderTime, displayedComponents: .hourAndMinute)
                 }
