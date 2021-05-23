@@ -11,7 +11,13 @@ struct HabitDetails_Screen: View {
     @Binding var habit: Habit
     @State private var data: Habit.Data = Habit.Data()
     @State private var isPresented: Bool = false
+    @State private var selectedMonth: SelectedMonth = .current
     @Environment(\.calendar) var calendar
+    
+    enum SelectedMonth {
+        case current, previous
+    }
+    
     
     private var year: DateInterval {
         calendar.dateInterval(of: .year, for: Date())!
@@ -42,7 +48,14 @@ struct HabitDetails_Screen: View {
                 }
                 
                 Section(header: Text("History")) {
-                    MonthView(month: Date(), content: dayView)
+                    Picker(selection: $selectedMonth, label:
+                                   Text("Selected Month")
+                                   , content: {
+                                    Text(Date().previousMonth.monthAsString()).tag(SelectedMonth.previous)
+                                    Text(Date().monthAsString()).tag(SelectedMonth.current)
+                                   }).pickerStyle(SegmentedPickerStyle())
+                    
+                    MonthView(month: selectedMonth == .current ? Date() : Date().previousMonth, showHeader: false, content: dayView)
                 }
             }
             .listStyle(InsetGroupedListStyle())
@@ -72,7 +85,7 @@ struct HabitDetails_Screen: View {
             achievementDate.isSameDay(as: calendarDate)
         }.count != 0
         
-        return Text("11")
+        return Text("1")
             .hidden()
             .padding()
             .background(isAchievement ? habit.color : Color.white)

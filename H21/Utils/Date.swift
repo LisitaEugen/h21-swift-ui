@@ -23,6 +23,11 @@ extension Date {
     var month: Int {
         return Calendar.current.component(.month,  from: self)
     }
+    
+    var previousMonth: Date {
+        return Calendar.current.date(byAdding: .month, value: -1, to: self)!
+    }
+    
     var isLastDayOfMonth: Bool {
         return dayAfter.month != month
     }
@@ -40,12 +45,24 @@ extension Date {
     static func date(fromString string: String, withFormat format: String) -> Date? {
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = format
-
+        
         return dateformatter.date(from: string)
     }
     
     func short() -> String {
         return Date.getFormattedDate(date: self, format: "E d")
+    }
+    
+    func monthAsString() -> String {
+        let df = DateFormatter()
+        df.setLocalizedDateFormatFromTemplate("MMM")
+        return df.string(from: self)
+    }
+    
+    static func monthAsString(from date: Date) -> String {
+        let df = DateFormatter()
+        df.setLocalizedDateFormatFromTemplate("MMM")
+        return df.string(from: date)
     }
     
     static var currentRangeDates: [Date] = {
@@ -67,7 +84,7 @@ extension Date {
     
     func isSameDay(as date: Date) -> Bool {
         let order = Calendar.current.compare(self, to: date, toGranularity: .day)
-
+        
         switch order {
         case .orderedDescending:
             return false
