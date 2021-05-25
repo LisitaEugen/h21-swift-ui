@@ -74,6 +74,13 @@ struct HabitDetails_Screen: View {
                     }, trailing: Button("Done") {
                         isPresented = false
                         habit.update(from: data)
+                        
+                        // set up notification
+                        if let _ = habit.reminderTime {
+                            Notifications.scheduleNotifications(for: habit)
+                        } else {
+                            Notifications.removeNotifications(for: habit)
+                        }
                     })
             }
         }

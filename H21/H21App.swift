@@ -26,6 +26,7 @@ struct H21App: App {
             }
             .onAppear() {
                 viewModel.loadHabits()
+                Notifications.requestPermissions()
             }
         }
     }

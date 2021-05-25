@@ -23,6 +23,7 @@
 		DE99F0C2259110B600FC99EC /* HabitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0C1259110B600FC99EC /* HabitDetails.swift */; };
 		DED4FA6C25BC914C001384FE /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4FA6B25BC914C001384FE /* Checkbox.swift */; };
 		EA618796265A8C5C0046A22D /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA618795265A8C5C0046A22D /* Calendar.swift */; };
+		EA618798265DA0170046A22D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA618797265DA0170046A22D /* Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		DE99F0C1259110B600FC99EC /* HabitDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetails.swift; sourceTree = "<group>"; };
 		DED4FA6B25BC914C001384FE /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		EA618795265A8C5C0046A22D /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		EA618797265DA0170046A22D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				DE519A7125C89FDF00F9E187 /* Date.swift */,
 				DE8897BB25CEA59C00A6AC55 /* Color.swift */,
 				DE8897C925CF433900A6AC55 /* ServiceLocator.swift */,
+				EA618797265DA0170046A22D /* Notifications.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				DE8897BC25CEA59C00A6AC55 /* Color.swift in Sources */,
 				DE519A8A25C8B3EC00F9E187 /* HabitsViewModel.swift in Sources */,
 				DE99F0882590F25D00FC99EC /* H21App.swift in Sources */,
+				EA618798265DA0170046A22D /* Notifications.swift in Sources */,
 				DE99F0BD25910F9100FC99EC /* AddHabit.swift in Sources */,
 				DE8897CA25CF433900A6AC55 /* ServiceLocator.swift in Sources */,
 				EA618796265A8C5C0046A22D /* Calendar.swift in Sources */,
