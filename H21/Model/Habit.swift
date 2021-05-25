@@ -14,20 +14,18 @@ struct Habit: Identifiable, Codable  {
     var createdAt: Date = Date()
     var reminderTime: Date?
     var achievements: [Date] = []
-    var enabledAchievements: [Bool] = [false, true, false, true, false, true] {
+    var enabledAchievements: [Bool] = Array(repeating: false, count: 6) {
         didSet {
             handleChanges(for: enabledAchievements)
         }
     }
 }
 
-// init enabledAchievements by iterationg throug current interval and matching with acievements array
-// add/remove achievements by listening on changes of current enabledAchievements
-
 extension Habit {
     static var demoHabit: Habit  {
         var habit = Habit(title: "Read a 📖 daily", motivation: "Reading is essential for those who seek to rise above the ordinary. – Jim Rohn")
-        habit.achievements = [Date(), Date.yesterday, Date.yesterday.dayBefore, Date().previousMonth]
+        habit.enabledAchievements = [false, false, false, true, true, true]
+        habit.achievements = [Date(), Date.yesterday, Date.yesterday.dayBefore]
         return habit
     }
 }
@@ -127,5 +125,8 @@ extension Habit {
         
         achievements.remove(at: indexForRemoval)
     }
+}
+
+extension Habit: Equatable, Hashable {
 }
 

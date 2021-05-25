@@ -34,12 +34,14 @@ class HabitsViewModel: ObservableObject {
     
     func saveHabits() {
         persister?.save(self.habits)
+        print("save")
+        print(habits)
     }
     
     func progressIcon(for habit: Habit) -> String {
-        // if in last 2 months > 100% from 21 -> rocking 🚀 😍 🐆 􀲯 􀑓  􀱀 􀱂 􀂄
-        //                     >= 50% from 21 -> ontrack ✅ 🙂 🐇 􀊀 􀙙  􀰓 􀄍 􀁼
-        //            <= 50% from 21 -> needsImprovement 🔨 😐 🐢 􀊂 􀝢   􀂉 􀄙 􀂈
+        // if in last 2 months > 100% from 21 -> rocking 🚀 😍 👏 🐆 􀲯 􀑓  􀱀 􀱂 􀂄
+        //                     >= 50% from 21 -> ontrack ✅ 🙂 👌🐇 􀊀 􀙙  􀰓 􀄍 􀁼
+        //            <= 50% from 21 -> needsImprovement 🔨 😐 🤞🐢 􀊂 􀝢   􀂉 􀄙 􀂈
         
         let last2MonthAchievements = habit.achievements.filter {
             date in
@@ -56,8 +58,11 @@ class HabitsViewModel: ObservableObject {
             
         }
         
-        print("last2MonthAchievements")
-        print(last2MonthAchievements)
+//        print("last2MonthAchievements.count")
+//        print(last2MonthAchievements.count)
+//
+//        print("last2MonthAchievements")
+//        print(last2MonthAchievements)
         
         let achievementsPercentage = last2MonthAchievements.count > 0 ? Int((Double(last2MonthAchievements.count) / 21.0) * 100.0) : 0
         

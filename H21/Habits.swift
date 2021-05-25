@@ -11,21 +11,28 @@ struct Habits_Screen: View {
     @EnvironmentObject var habitsModel: HabitsViewModel
     @State var addHabitPresented = false
     @State var newHabitData = Habit.Data()
+    @State private var selectedHabit: Habit?
     @Environment(\.scenePhase) private var scenePhase
     let saveAction: () -> Void
     
     var body: some View {
         VStack {
             Days()
-            List(habitsModel.habits, id: \.title) { habit in
+            List(habitsModel.habits, id: \.id) { habit in
                 HabitRow(habit: binding(for: habit))
+                    .listRowBackground(Color.red)
                 NavigationLink(
-                    destination: HabitDetails_Screen(habit: binding(for: habit))
-                ) {
+                    destination: HabitDetails_Screen(habit: binding(for: habit)),
+                    tag: habit,
+                    selection: self.$selectedHabit
+                ){
                     EmptyView()
-                }.hidden().frame(width: 0)
+                }
+                .hidden()
+                .frame(width: 0)
+                .listRowBackground(self.selectedHabit == habit ? Color.secondary : Color.clear)
             }
-            .background(Color.red)
+            
             Spacer()
         }
         .navigationBarTitle(Text("Habits"))
