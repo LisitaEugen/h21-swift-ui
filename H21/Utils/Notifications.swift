@@ -54,6 +54,8 @@ class Notifications {
                     debugPrint("Schedule notification error: \(error)")
                 }
             }
+        } else {
+            debugPrint("No time for reminder!")
         }
     }
     
