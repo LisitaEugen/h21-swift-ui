@@ -41,7 +41,7 @@ struct HabitDetails_Screen: View {
                         HStack {
                             Label("Remind me daily at", systemImage: "alarm")
                             Spacer()
-                            Text(Date.getFormattedDate(date: reminderTime, format: "HH:MM"))
+                            Text(Date.getFormattedDate(date: reminderTime, format: "h:mm a"))
                                 .font(.headline)
                         }
                     }

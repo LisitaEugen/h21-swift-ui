@@ -47,13 +47,7 @@ extension Habit {
         var title: String = ""
         var motivation: String = ""
         var color: Color = .random
-        var reminderOn: Bool = true {
-            didSet {
-                if reminderOn {
-                    reminderTime = Date()
-                }
-            }
-        }
+        var reminderOn: Bool = false
         var reminderTime: Date = Date()
     }
     
@@ -72,13 +66,14 @@ extension Habit {
     }
     
     var data: Data {
-        return Data(title: title, motivation: motivation, color: color)
+        return Data(title: title, motivation: motivation, color: color, reminderOn: reminderTime != nil, reminderTime: reminderTime ?? Date())
     }
     
     mutating func update(from data: Data) {
         self.title = data.title
         self.motivation = data.motivation
         self.color = data.color
+        self.reminderTime = data.reminderOn ? data.reminderTime : nil
     }
 }
 
