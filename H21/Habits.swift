@@ -30,9 +30,8 @@ struct Habits_Screen: View {
                 }
                 .hidden()
                 .frame(width: 0)
-                .listRowBackground(self.selectedHabit == habit ? Color.secondary : Color.clear)
             }
-            
+            .listRowBackground(Color.red)
             Spacer()
         }
         .navigationBarTitle(Text("Habits"))
@@ -75,17 +74,19 @@ struct HabitRow: View {
         VStack{
             HStack {
                 Checkbox(isChecked: $habit.enabledAchievements[0], color: habit.color)
-                    .padding()
+                    .frame(maxWidth: .infinity)
                 Checkbox(isChecked: $habit.enabledAchievements[1], color: habit.color)
-                    .padding()
+                    .frame(maxWidth: .infinity)
                 Checkbox(isChecked: $habit.enabledAchievements[2], color: habit.color)
-                    .padding()
+                    .frame(maxWidth: .infinity)
                 Checkbox(isChecked: $habit.enabledAchievements[3], color: habit.color)
-                    .padding()
+                    .frame(maxWidth: .infinity)
                 Checkbox(isChecked: $habit.enabledAchievements[4], color: habit.color)
-                    .padding()
+                    .frame(maxWidth: .infinity)
                 Checkbox(isChecked: $habit.enabledAchievements[5], color: habit.color)
-                    .padding()
+                    .frame(maxWidth: .infinity)
+                Checkbox(isChecked: $habit.enabledAchievements[6], color: habit.color)
+                    .frame(maxWidth: .infinity)
             }
             HStack {
                 Text(habit.title)
@@ -118,7 +119,7 @@ struct Days: View {
                     Text(number)
                         .fontWeight(.bold)
                 }
-                .padding()
+                .frame(maxWidth: .infinity)
             }
         }
     }

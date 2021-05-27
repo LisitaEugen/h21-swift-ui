@@ -66,7 +66,7 @@ extension Date {
     }
     
     static var currentRangeDates: [Date] = {
-        var numberOfDaysInRange = 6
+        var numberOfDaysInRange = 7
         var currentDate = Date().before(days: numberOfDaysInRange - 1)
         var dates = [Date]()
         
