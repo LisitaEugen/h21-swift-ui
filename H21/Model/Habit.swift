@@ -14,7 +14,7 @@ struct Habit: Identifiable, Codable  {
     var createdAt: Date = Date()
     var reminderTime: Date?
     var achievements: [Date] = []
-    var enabledAchievements: [Bool] = Array(repeating: false, count: 7) {
+    var enabledAchievements: [Bool] = Array(repeating: false, count: 6) {
         didSet {
             handleChanges(for: enabledAchievements)
         }
@@ -24,7 +24,7 @@ struct Habit: Identifiable, Codable  {
 extension Habit {
     static var demoHabit: Habit  {
         var habit = Habit(title: "Read a 📖 daily", motivation: "Reading is essential for those who seek to rise above the ordinary. – Jim Rohn")
-        habit.enabledAchievements = [false, false, false, true, true, true, true]
+        habit.enabledAchievements = [false, false, false, true, true, true]
         habit.achievements = [Date(), Date.yesterday, Date.yesterday.dayBefore]
         return habit
     }

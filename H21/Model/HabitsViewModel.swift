@@ -10,16 +10,18 @@ import Foundation
 enum Progress {
     case rocking, onTrack, needsImprovement
     
-    func toIconString() -> String {
+    func toUI() -> (String, String) {
         switch self {
         case .rocking:
-            return "arrow.up.right.circle.fill"
+            return ("Rocking", "arrow.up.right.circle.fill")
         case .onTrack:
-            return "arrow.forward.circle.fill"
+            return ("On track","arrow.forward.circle.fill")
         case .needsImprovement:
-            return "arrow.down.forward.circle.fill"
+            return ("Needs improvement","arrow.down.forward.circle.fill")
         }
     }
+    
+    
 }
 
 class HabitsViewModel: ObservableObject {
@@ -38,11 +40,13 @@ class HabitsViewModel: ObservableObject {
         print(habits)
     }
     
-    func progressIcon(for habit: Habit) -> String {
+    func progress(for habit: Habit) -> Progress {
         // if in last 2 months > 100% from 21 -> rocking 🚀 😍 👏 🐆 􀲯 􀑓  􀱀 􀱂 􀂄
         //                     >= 50% from 21 -> ontrack ✅ 🙂 👌🐇 􀊀 􀙙  􀰓 􀄍 􀁼
         //            <= 50% from 21 -> needsImprovement 🔨 😐 🤞🐢 􀊂 􀝢   􀂉 􀄙 􀂈
         
+        
+        // TODO: CHECK if filers properly
         let last2MonthAchievements = habit.achievements.filter {
             date in
             let order = Calendar.current.compare(Date().previousMonth, to: date, toGranularity: .day)
@@ -57,13 +61,7 @@ class HabitsViewModel: ObservableObject {
             }
             
         }
-        
-//        print("last2MonthAchievements.count")
-//        print(last2MonthAchievements.count)
-//
-//        print("last2MonthAchievements")
-//        print(last2MonthAchievements)
-        
+                
         let achievementsPercentage = last2MonthAchievements.count > 0 ? Int((Double(last2MonthAchievements.count) / 21.0) * 100.0) : 0
         
         var progress: Progress
@@ -76,8 +74,6 @@ class HabitsViewModel: ObservableObject {
         }
         
         
-        return progress.toIconString()
+        return progress
     }
-    
-    
 }

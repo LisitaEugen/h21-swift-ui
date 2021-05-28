@@ -11,27 +11,22 @@ struct Habits_Screen: View {
     @EnvironmentObject var habitsModel: HabitsViewModel
     @State var addHabitPresented = false
     @State var newHabitData = Habit.Data()
-    @State private var selectedHabit: Habit?
     @Environment(\.scenePhase) private var scenePhase
     let saveAction: () -> Void
     
     var body: some View {
         VStack {
             Days()
-            List(habitsModel.habits, id: \.id) { habit in
-                HabitRow(habit: binding(for: habit))
-                    .listRowBackground(Color.red)
-                NavigationLink(
-                    destination: HabitDetails_Screen(habit: binding(for: habit)),
-                    tag: habit,
-                    selection: self.$selectedHabit
-                ){
-                    EmptyView()
+            List{
+                ForEach(habitsModel.habits, id: \.id) { habit in
+                    NavigationLink(
+                        destination: HabitDetails_Screen(habit: binding(for: habit))
+                    ){
+                        HabitRow(habit: binding(for: habit))
+                    }
                 }
-                .hidden()
-                .frame(width: 0)
             }
-            .listRowBackground(Color.red)
+            .listStyle(PlainListStyle())
             Spacer()
         }
         .navigationBarTitle(Text("Habits"))
@@ -70,34 +65,46 @@ struct HabitRow: View {
     @Binding var habit: Habit
     @EnvironmentObject var habitsModel: HabitsViewModel
     
+    
     var body: some View {
-        VStack{
-            HStack {
-                Checkbox(isChecked: $habit.enabledAchievements[0], color: habit.color)
-                    .frame(maxWidth: .infinity)
-                Checkbox(isChecked: $habit.enabledAchievements[1], color: habit.color)
-                    .frame(maxWidth: .infinity)
-                Checkbox(isChecked: $habit.enabledAchievements[2], color: habit.color)
-                    .frame(maxWidth: .infinity)
-                Checkbox(isChecked: $habit.enabledAchievements[3], color: habit.color)
-                    .frame(maxWidth: .infinity)
-                Checkbox(isChecked: $habit.enabledAchievements[4], color: habit.color)
-                    .frame(maxWidth: .infinity)
-                Checkbox(isChecked: $habit.enabledAchievements[5], color: habit.color)
-                    .frame(maxWidth: .infinity)
-                Checkbox(isChecked: $habit.enabledAchievements[6], color: habit.color)
-                    .frame(maxWidth: .infinity)
+        let (status, icon) = habitsModel.progress(for: habit).toUI()
+        
+        return
+            VStack(spacing: 0) {
+                HStack {
+                    Checkbox(isChecked: $habit.enabledAchievements[0], color: habit.color)
+                        .frame(maxWidth: .infinity)
+                    Checkbox(isChecked: $habit.enabledAchievements[1], color: habit.color)
+                        .frame(maxWidth: .infinity)
+                    Checkbox(isChecked: $habit.enabledAchievements[2], color: habit.color)
+                        .frame(maxWidth: .infinity)
+                    Checkbox(isChecked: $habit.enabledAchievements[3], color: habit.color)
+                        .frame(maxWidth: .infinity)
+                    Checkbox(isChecked: $habit.enabledAchievements[4], color: habit.color)
+                        .frame(maxWidth: .infinity)
+                    Checkbox(isChecked: $habit.enabledAchievements[5], color: habit.color)
+                        .frame(maxWidth: .infinity)
+                }
+                .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                HStack {
+                    Text(habit.title)
+                        .font(.title3)
+                    Spacer()
+                }
+                .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 0))
+                HStack {
+                    Label(status, systemImage: icon)
+                        .font(.system(size: 15, weight: .bold))
+                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 10))
+                        .foregroundColor(Color.white)
+                        .background(habit.color)
+                        .clipShape(Capsule())
+                        .overlay(Capsule().stroke(Color.white, lineWidth: 2))
+                    Spacer()
+                }
+                .padding()
             }
-            HStack {
-                Text(habit.title)
-                Spacer()
-                Image(systemName: habitsModel.progressIcon(for: habit))
-                    .foregroundColor(habit.color)
-                    .font(.system(size: 25, weight: .bold))
-            }
-            .padding()
-        }
-        .cornerRadius(10.0)
+//            .cornerRadius(10.0)
     }
 }
 
@@ -122,6 +129,7 @@ struct Days: View {
                 .frame(maxWidth: .infinity)
             }
         }
+        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 35))
     }
 }
 
@@ -131,6 +139,12 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             Habits_Screen() {}
+                .environmentObject(HabitsViewModel())
         }
+        Group {
+            HabitRow(habit: .constant(Habit.demoHabit))
+                .environmentObject(HabitsViewModel())
+        }
+
     }
 }
