@@ -61,7 +61,7 @@ class HabitsViewModel: ObservableObject {
             }
             
         }
-                
+        
         let achievementsPercentage = last2MonthAchievements.count > 0 ? Int((Double(last2MonthAchievements.count) / 21.0) * 100.0) : 0
         
         var progress: Progress
@@ -75,5 +75,11 @@ class HabitsViewModel: ObservableObject {
         
         
         return progress
+    }
+    
+    func onChange(achievements enabledAchievements: [Bool], for habit: Habit) {
+        var updatedHabit = habit
+        updatedHabit.enabledAchievements = enabledAchievements
+        habits = habits.map { $0.id != habit.id ? $0 : updatedHabit }
     }
 }

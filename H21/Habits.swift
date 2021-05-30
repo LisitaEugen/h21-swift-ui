@@ -22,11 +22,12 @@ struct Habits_Screen: View {
                     NavigationLink(
                         destination: HabitDetails_Screen(habit: binding(for: habit))
                     ){
-                        HabitRow(habit: binding(for: habit))
+                        HabitRow(enabledAchievements: habit.enabledAchievements, habit: habit)
                     }
                 }
+                .onDelete(perform: deleteHabits)
             }
-            .listStyle(PlainListStyle())
+            //            .listStyle(PlainListStyle())
             Spacer()
         }
         .navigationBarTitle(Text("Habits"))
@@ -43,7 +44,7 @@ struct Habits_Screen: View {
                     }, trailing: Button("Add") {
                         let newHabit = Habit.new(from: newHabitData)
                         habitsModel.habits.append(newHabit)
-                        
+                        newHabitData = Habit.Data()
                         addHabitPresented = false
                     })
             }
@@ -59,11 +60,16 @@ struct Habits_Screen: View {
         }
         return $habitsModel.habits[habitIndex]
     }
+    
+    func deleteHabits(at offsets: IndexSet) {
+        habitsModel.habits.remove(atOffsets: offsets)
+    }
 }
 
 struct HabitRow: View {
-    @Binding var habit: Habit
+    @State var enabledAchievements = Array(repeating: false, count: 6)
     @EnvironmentObject var habitsModel: HabitsViewModel
+    var habit: Habit
     
     
     var body: some View {
@@ -72,17 +78,17 @@ struct HabitRow: View {
         return
             VStack(spacing: 0) {
                 HStack {
-                    Checkbox(isChecked: $habit.enabledAchievements[0], color: habit.color)
+                    Checkbox(isChecked: $enabledAchievements[0], color: habit.color)
                         .frame(maxWidth: .infinity)
-                    Checkbox(isChecked: $habit.enabledAchievements[1], color: habit.color)
+                    Checkbox(isChecked: $enabledAchievements[1], color: habit.color)
                         .frame(maxWidth: .infinity)
-                    Checkbox(isChecked: $habit.enabledAchievements[2], color: habit.color)
+                    Checkbox(isChecked: $enabledAchievements[2], color: habit.color)
                         .frame(maxWidth: .infinity)
-                    Checkbox(isChecked: $habit.enabledAchievements[3], color: habit.color)
+                    Checkbox(isChecked: $enabledAchievements[3], color: habit.color)
                         .frame(maxWidth: .infinity)
-                    Checkbox(isChecked: $habit.enabledAchievements[4], color: habit.color)
+                    Checkbox(isChecked: $enabledAchievements[4], color: habit.color)
                         .frame(maxWidth: .infinity)
-                    Checkbox(isChecked: $habit.enabledAchievements[5], color: habit.color)
+                    Checkbox(isChecked: $enabledAchievements[5], color: habit.color)
                         .frame(maxWidth: .infinity)
                 }
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
@@ -104,7 +110,13 @@ struct HabitRow: View {
                 }
                 .padding()
             }
-//            .cornerRadius(10.0)
+            .onChange(of: enabledAchievements) { newEnabledAchievements in
+                handleChanges(for: newEnabledAchievements)
+            }
+    }
+    
+    private func handleChanges(for achievements: [Bool]) {
+        habitsModel.onChange(achievements: enabledAchievements, for: habit)
     }
 }
 
@@ -142,9 +154,9 @@ struct ContentView_Previews: PreviewProvider {
                 .environmentObject(HabitsViewModel())
         }
         Group {
-            HabitRow(habit: .constant(Habit.demoHabit))
+            HabitRow(enabledAchievements: Habit.demoHabit.enabledAchievements, habit: Habit.demoHabit)
                 .environmentObject(HabitsViewModel())
         }
-
+        
     }
 }

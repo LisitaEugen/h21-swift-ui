@@ -25,7 +25,7 @@ extension Habit {
     static var demoHabit: Habit  {
         var habit = Habit(title: "Read a 📖 daily", motivation: "Reading is essential for those who seek to rise above the ordinary. – Jim Rohn")
         habit.enabledAchievements = [false, false, false, true, true, true]
-        habit.achievements = [Date(), Date.yesterday, Date.yesterday.dayBefore]
+        habit.achievements = [Date.yesterday.dayBefore, Date.yesterday, Date()]
         return habit
     }
 }
@@ -102,7 +102,6 @@ extension Habit {
                 removeAchievement(for: dates[index])
             }
         }
-        print(achievements)
     }
     
     mutating func addAchievement(for date: Date) {

@@ -13,6 +13,7 @@ struct HabitDetails_Screen: View {
     @State private var isPresented: Bool = false
     @State private var selectedMonth: SelectedMonth = .current
     @Environment(\.calendar) var calendar
+    @Environment(\.presentationMode) var presentation
     
     enum SelectedMonth {
         case current, previous
@@ -49,11 +50,11 @@ struct HabitDetails_Screen: View {
                 
                 Section(header: Text("History")) {
                     Picker(selection: $selectedMonth, label:
-                                   Text("Selected Month")
-                                   , content: {
-                                    Text(Date().previousMonth.monthAsString()).tag(SelectedMonth.previous)
-                                    Text(Date().monthAsString()).tag(SelectedMonth.current)
-                                   }).pickerStyle(SegmentedPickerStyle())
+                            Text("Selected Month")
+                           , content: {
+                            Text(Date().previousMonth.monthAsString()).tag(SelectedMonth.previous)
+                            Text(Date().monthAsString()).tag(SelectedMonth.current)
+                           }).pickerStyle(SegmentedPickerStyle())
                     
                     MonthView(month: selectedMonth == .current ? Date() : Date().previousMonth, showHeader: false, content: dayView)
                 }
