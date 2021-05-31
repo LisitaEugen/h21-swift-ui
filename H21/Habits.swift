@@ -71,7 +71,6 @@ struct HabitRow: View {
     @EnvironmentObject var habitsModel: HabitsViewModel
     var habit: Habit
     
-    
     var body: some View {
         let (status, icon) = habitsModel.progress(for: habit).toUI()
         
@@ -99,6 +98,16 @@ struct HabitRow: View {
                 }
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 0))
                 HStack {
+                    if let reminderTime = habit.reminderTime {
+                        Label(Date.getFormattedDate(date: reminderTime, format: "h:mm a"), systemImage: "alarm.fill")
+                            .font(.system(size: 15, weight: .bold))
+                            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 10))
+                            .foregroundColor(Color.white)
+                            .background(habit.color)
+                            .clipShape(Capsule())
+                            .overlay(Capsule().stroke(Color.white, lineWidth: 2))
+                    }
+                    Spacer()
                     Label(status, systemImage: icon)
                         .font(.system(size: 15, weight: .bold))
                         .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 10))
@@ -106,7 +115,7 @@ struct HabitRow: View {
                         .background(habit.color)
                         .clipShape(Capsule())
                         .overlay(Capsule().stroke(Color.white, lineWidth: 2))
-                    Spacer()
+                    
                 }
                 .padding()
             }
