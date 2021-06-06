@@ -14,11 +14,11 @@ struct HabitDetails_Screen: View {
     @State private var selectedMonth: SelectedMonth = .current
     @Environment(\.calendar) var calendar
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var viewModel: HabitsViewModel
     
     enum SelectedMonth {
         case current, previous
     }
-    
     
     private var year: DateInterval {
         calendar.dateInterval(of: .year, for: Date())!
@@ -61,7 +61,6 @@ struct HabitDetails_Screen: View {
             }
             .listStyle(InsetGroupedListStyle())
         }
-        
         .navigationBarItems(trailing: Button("Edit") {
             isPresented = true
             data = habit.data
@@ -78,9 +77,9 @@ struct HabitDetails_Screen: View {
                         
                         // set up notification
                         if let _ = habit.reminderTime {
-                            Notifications.scheduleNotifications(for: habit)
+                            viewModel.scheduleNotifications(for: habit)
                         } else {
-                            Notifications.removeNotifications(for: habit)
+                            viewModel.removeNotifications(for: habit)
                         }
                     })
             }

@@ -27,18 +27,8 @@ enum Progress {
 class HabitsViewModel: ObservableObject {
     @Published var habits: [Habit] = Habit.data
     var persister: Persister? = ServiceLocator.shared.getService()
+    var notifications: Notifications? = ServiceLocator.shared.getService()
     
-    func loadHabits() {
-        persister?.load() { habits in
-            self.habits = habits
-        }
-    }
-    
-    func saveHabits() {
-        persister?.save(self.habits)
-        print("save")
-        print(habits)
-    }
     
     func progress(for habit: Habit) -> Progress {
         // if in last 2 months > 100% from 21 -> rocking 🚀 😍 👏 🐆 􀲯 􀑓  􀱀 􀱂 􀂄
@@ -81,5 +71,44 @@ class HabitsViewModel: ObservableObject {
         var updatedHabit = habit
         updatedHabit.enabledAchievements = enabledAchievements
         habits = habits.map { $0.id != habit.id ? $0 : updatedHabit }
+    }
+}
+
+
+extension HabitsViewModel {
+    func loadHabits() {
+        persister?.load() { habits in
+            self.habits = habits
+        }
+    }
+    
+    func saveHabits() {
+        persister?.save(self.habits)
+        print("save")
+        print(habits)
+    }
+}
+
+extension HabitsViewModel {
+    func requestNotificaitonsPermisstions() {
+        notifications?.requestPermissions()
+    }
+    
+    func scheduleNotifications(for habit: Habit) {
+        guard let reminderTime = habit.reminderTime else {
+            debugPrint("No time for reminder!")
+            return
+        }
+        
+        let title = habit.title
+        let message = habit.motivation
+        let notificationId = habit.id.uuidString
+        
+        notifications?.scheduleNotifications(with: notificationId, title, message, for: reminderTime)
+    }
+    
+    func removeNotifications(for habit: Habit) {
+        let notificationId = habit.id.uuidString
+        notifications?.removeNotifications(with: notificationId)
     }
 }

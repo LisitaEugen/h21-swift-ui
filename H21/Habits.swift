@@ -20,7 +20,7 @@ struct Habits_Screen: View {
             List{
                 ForEach(habitsModel.habits, id: \.id) { habit in
                     NavigationLink(
-                        destination: HabitDetails_Screen(habit: binding(for: habit))
+                        destination: HabitDetails_Screen(habit: binding(for: habit)).environmentObject(HabitsViewModel())
                     ){
                         HabitRow(enabledAchievements: habit.enabledAchievements, habit: habit)
                     }
@@ -129,7 +129,6 @@ struct HabitRow: View {
     }
 }
 
-
 struct Days: View {
     typealias Day = (number: String, day: String)
     var days: [Day] {
@@ -154,7 +153,6 @@ struct Days: View {
     }
 }
 
-
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
@@ -166,6 +164,5 @@ struct ContentView_Previews: PreviewProvider {
             HabitRow(enabledAchievements: Habit.demoHabit.enabledAchievements, habit: Habit.demoHabit)
                 .environmentObject(HabitsViewModel())
         }
-        
     }
 }

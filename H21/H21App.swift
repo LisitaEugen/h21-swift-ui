@@ -13,6 +13,7 @@ struct H21App: App {
     
     init() {
         ServiceLocator.shared.addService(service: FilePersister() as Persister)
+        ServiceLocator.shared.addService(service: Notifications() as Notificator)
         viewModel = HabitsViewModel()
     }
     
@@ -26,7 +27,7 @@ struct H21App: App {
             }
             .onAppear() {
                 viewModel.loadHabits()
-                Notifications.requestPermissions()
+                viewModel.requestNotificaitonsPermisstions()
             }
         }
     }

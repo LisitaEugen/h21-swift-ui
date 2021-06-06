@@ -7,8 +7,54 @@
 
 import UserNotifications
 
-class Notifications {
-    static func requestPermissions() {
+protocol Notificator {
+    func requestPermissions()
+    func scheduleNotifications(with id: String, _ title: String, _ message: String, for time: Date)
+    func removeNotifications(with id: String)
+}
+
+class Notifications: Notificator {
+    func scheduleNotifications(with id: String, _ title: String, _ message: String, for time: Date) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = message
+        
+        // Configure the recurring date.
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+        
+        
+        let hour = Calendar.current.component(.hour, from: time)
+        let minute = Calendar.current.component(.minute, from: time)
+        
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        
+        // Create the trigger as a repeating event.
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: dateComponents, repeats: true)
+        
+        
+        // Create the request
+        let requestId = id
+        let request = UNNotificationRequest(identifier: requestId,
+                                            content: content, trigger: trigger)
+        
+        // Schedule the request with the system.
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                debugPrint("Schedule notification error: \(error)")
+            }
+        }
+    }
+    
+    func removeNotifications(with id: String) {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
+    }
+    
+    func requestPermissions() {
         let center = UNUserNotificationCenter.current()
         
         center.requestAuthorization(options: [.alert])
@@ -17,51 +63,5 @@ class Notifications {
                 print(error)
             }
         }
-    }
-    
-    static func scheduleNotifications(for habit: Habit) {
-        let content = UNMutableNotificationContent()
-        content.title = habit.title
-        content.body = habit.motivation
-        
-        print("scheduleNotifications for", habit.reminderTime!)
-
-        // Configure the recurring date.
-        var dateComponents = DateComponents()
-        dateComponents.calendar = Calendar.current
-
-        if let reminderDate = habit.reminderTime {
-            let hour = Calendar.current.component(.hour, from: reminderDate)
-            let minute = Calendar.current.component(.minute, from: reminderDate)
-                        
-            dateComponents.hour = hour
-            dateComponents.minute = minute
-
-            // Create the trigger as a repeating event.
-            let trigger = UNCalendarNotificationTrigger(
-                dateMatching: dateComponents, repeats: true)
-
-
-            // Create the request
-            let requestId = habit.id.uuidString
-            let request = UNNotificationRequest(identifier: requestId,
-                                                content: content, trigger: trigger)
-
-            // Schedule the request with the system.
-            let notificationCenter = UNUserNotificationCenter.current()
-            notificationCenter.add(request) { (error) in
-                if let error = error {
-                    debugPrint("Schedule notification error: \(error)")
-                }
-            }
-        } else {
-            debugPrint("No time for reminder!")
-        }
-    }
-    
-    static func removeNotifications(for habit: Habit) {
-        let requestId = habit.id.uuidString
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: [requestId])
     }
 }

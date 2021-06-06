@@ -23,7 +23,6 @@ struct AddHabit_Screen: View {
                 if habitData.reminderOn {
                     DatePicker("at", selection: $habitData.reminderTime, displayedComponents: .hourAndMinute)
                 }
-                
             }
         }
         .listStyle(InsetGroupedListStyle())
