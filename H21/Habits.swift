@@ -99,22 +99,14 @@ struct HabitRow: View {
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 0))
                 HStack {
                     if let reminderTime = habit.reminderTime {
-                        Label(Date.getFormattedDate(date: reminderTime, format: "h:mm a"), systemImage: "alarm.fill")
-                            .font(.system(size: 15, weight: .bold))
-                            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 10))
-                            .foregroundColor(Color.white)
-                            .background(habit.color)
-                            .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.white, lineWidth: 2))
+                        Badge(color: habit.color) {
+                            Label(                                Date.getFormattedDate(date: reminderTime, format: "h:mm a"), systemImage: "alarm.fill")
+                        }
                     }
                     Spacer()
-                    Label(status, systemImage: icon)
-                        .font(.system(size: 15, weight: .bold))
-                        .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 10))
-                        .foregroundColor(Color.white)
-                        .background(habit.color)
-                        .clipShape(Capsule())
-                        .overlay(Capsule().stroke(Color.white, lineWidth: 2))
+                    Badge(color: habit.color) {
+                        Label(status,systemImage: icon)
+                    }
                     
                 }
                 .padding()
@@ -150,6 +142,26 @@ struct Days: View {
             }
         }
         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 35))
+    }
+}
+
+struct Badge<Content:View>: View {
+    var color: Color
+    let content: Content
+
+    init(color: Color, @ViewBuilder content: () -> Content) {
+        self.color = color
+        self.content = content()
+    }
+
+    var body: some View {
+            content
+            .font(.system(size: 15, weight: .bold))
+            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 10))
+            .foregroundColor(Color.white)
+            .background(color)
+            .clipShape(Capsule())
+            .overlay(Capsule().stroke(Color.white, lineWidth: 2))
     }
 }
 
