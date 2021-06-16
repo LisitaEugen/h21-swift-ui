@@ -15,6 +15,7 @@ struct H21App: App {
         ServiceLocator.shared.addService(service: FilePersister() as Persister)
         ServiceLocator.shared.addService(service: Notifications() as Notificator)
         viewModel = HabitsViewModel()
+        resetUITableViewAppearance()
     }
     
     var body: some Scene {
@@ -30,5 +31,21 @@ struct H21App: App {
                 viewModel.requestNotificaitonsPermisstions()
             }
         }
+    }
+}
+
+extension H21App {
+    func resetUITableViewAppearance() {
+//        UITableView.appearance().separatorStyle = .none
+//        UITableView.appearance().separatorInset = .zero
+//        UITableView.appearance().showsHorizontalScrollIndicator = false
+//        UITableView.appearance().showsVerticalScrollIndicator = false
+//        UITableView.appearance().layoutMargins = .zero
+//        UITableView.appearance().contentInset = .zero
+//        UITableView.appearance().contentOffset = .zero
+        UITableViewCell.appearance().selectionStyle = .none
+        UITableViewCell.appearance().separatorInset = .zero
+        UITableViewCell.appearance().layoutMargins = .zero
+//        UITableViewHeaderFooterView.appearance().tintColor = .clear
     }
 }
