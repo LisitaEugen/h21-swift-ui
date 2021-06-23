@@ -157,7 +157,7 @@ struct Badge<Content:View>: View {
     var body: some View {
             content
             .font(.system(size: 15, weight: .bold))
-            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 10))
+            .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
             .foregroundColor(Color.white)
             .background(color)
             .clipShape(Capsule())

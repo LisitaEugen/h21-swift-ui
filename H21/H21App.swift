@@ -27,7 +27,7 @@ struct H21App: App {
                 .environmentObject(viewModel)
             }
             .onAppear() {
-                viewModel.loadHabits()
+                viewModel.loadHabits() {}
                 viewModel.requestNotificaitonsPermisstions()
             }
         }

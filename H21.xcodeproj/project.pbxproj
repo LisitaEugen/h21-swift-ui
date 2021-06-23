@@ -24,6 +24,25 @@
 		DED4FA6C25BC914C001384FE /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4FA6B25BC914C001384FE /* Checkbox.swift */; };
 		EA618796265A8C5C0046A22D /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA618795265A8C5C0046A22D /* Calendar.swift */; };
 		EA618798265DA0170046A22D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA618797265DA0170046A22D /* Notifications.swift */; };
+		EAC55D67268318FD007A7D05 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC55D66268318FD007A7D05 /* WidgetKit.framework */; };
+		EAC55D69268318FD007A7D05 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC55D68268318FD007A7D05 /* SwiftUI.framework */; };
+		EAC55D6C268318FD007A7D05 /* H21Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC55D6B268318FD007A7D05 /* H21Widget.swift */; };
+		EAC55D6F268318FE007A7D05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC55D6E268318FE007A7D05 /* Assets.xcassets */; };
+		EAC55D71268318FE007A7D05 /* H21Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EAC55D6D268318FD007A7D05 /* H21Widget.intentdefinition */; };
+		EAC55D72268318FE007A7D05 /* H21Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EAC55D6D268318FD007A7D05 /* H21Widget.intentdefinition */; };
+		EAC55D75268318FE007A7D05 /* H21WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EAC55D64268318FD007A7D05 /* H21WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EAC55D7A26831AAD007A7D05 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A7825C8A00A00F9E187 /* Habit.swift */; };
+		EAC55D7B26831AB3007A7D05 /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A8925C8B3EC00F9E187 /* HabitsViewModel.swift */; };
+		EAC55D7D2683270D007A7D05 /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0892590F25D00FC99EC /* Habits.swift */; };
+		EAC55D7E26832C3E007A7D05 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A7125C89FDF00F9E187 /* Date.swift */; };
+		EAC55D7F26832C42007A7D05 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8897BB25CEA59C00A6AC55 /* Color.swift */; };
+		EAC55D8026832C45007A7D05 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8897C925CF433900A6AC55 /* ServiceLocator.swift */; };
+		EAC55D8126832C48007A7D05 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA618797265DA0170046A22D /* Notifications.swift */; };
+		EAC55D8226832C4B007A7D05 /* FilePersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8897CF25CF440900A6AC55 /* FilePersister.swift */; };
+		EAC55D8326832C58007A7D05 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED4FA6B25BC914C001384FE /* Checkbox.swift */; };
+		EAC55D8426832C5B007A7D05 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA618795265A8C5C0046A22D /* Calendar.swift */; };
+		EAC55D8526832C78007A7D05 /* AddHabit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0BC25910F9100FC99EC /* AddHabit.swift */; };
+		EAC55D8626832C80007A7D05 /* HabitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE99F0C1259110B600FC99EC /* HabitDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +60,28 @@
 			remoteGlobalIDString = DE99F0832590F25D00FC99EC;
 			remoteInfo = H21;
 		};
+		EAC55D73268318FE007A7D05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE99F07C2590F25D00FC99EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAC55D63268318FD007A7D05;
+			remoteInfo = H21WidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EAC55D79268318FE007A7D05 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EAC55D75268318FE007A7D05 /* H21WidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DE519A7125C89FDF00F9E187 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -67,6 +107,15 @@
 		DED4FA6B25BC914C001384FE /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		EA618795265A8C5C0046A22D /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		EA618797265DA0170046A22D /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		EAC55D5F268315FE007A7D05 /* H21.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = H21.entitlements; sourceTree = "<group>"; };
+		EAC55D64268318FD007A7D05 /* H21WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = H21WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAC55D66268318FD007A7D05 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		EAC55D68268318FD007A7D05 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		EAC55D6B268318FD007A7D05 /* H21Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H21Widget.swift; sourceTree = "<group>"; };
+		EAC55D6D268318FD007A7D05 /* H21Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = H21Widget.intentdefinition; sourceTree = "<group>"; };
+		EAC55D6E268318FE007A7D05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EAC55D70268318FE007A7D05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAC55D7C26831B5B007A7D05 /* H21WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = H21WidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +140,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAC55D61268318FD007A7D05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAC55D69268318FD007A7D05 /* SwiftUI.framework in Frameworks */,
+				EAC55D67268318FD007A7D05 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,8 +157,6 @@
 			children = (
 				DE519A7125C89FDF00F9E187 /* Date.swift */,
 				DE8897BB25CEA59C00A6AC55 /* Color.swift */,
-				DE8897C925CF433900A6AC55 /* ServiceLocator.swift */,
-				EA618797265DA0170046A22D /* Notifications.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -109,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				DE8897CF25CF440900A6AC55 /* FilePersister.swift */,
+				EA618797265DA0170046A22D /* Notifications.swift */,
+				DE8897C925CF433900A6AC55 /* ServiceLocator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -116,9 +174,12 @@
 		DE99F07B2590F25D00FC99EC = {
 			isa = PBXGroup;
 			children = (
+				EAC55D7C26831B5B007A7D05 /* H21WidgetExtension.entitlements */,
 				DE99F0862590F25D00FC99EC /* H21 */,
 				DE99F0982590F26000FC99EC /* H21Tests */,
 				DE99F0A32590F26100FC99EC /* H21UITests */,
+				EAC55D6A268318FD007A7D05 /* H21Widget */,
+				EAC55D65268318FD007A7D05 /* Frameworks */,
 				DE99F0852590F25D00FC99EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -129,6 +190,7 @@
 				DE99F0842590F25D00FC99EC /* H21.app */,
 				DE99F0952590F26000FC99EC /* H21Tests.xctest */,
 				DE99F0A02590F26000FC99EC /* H21UITests.xctest */,
+				EAC55D64268318FD007A7D05 /* H21WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +198,7 @@
 		DE99F0862590F25D00FC99EC /* H21 */ = {
 			isa = PBXGroup;
 			children = (
+				EAC55D5F268315FE007A7D05 /* H21.entitlements */,
 				DE8897CE25CF43EF00A6AC55 /* Services */,
 				DE519A7025C89FBC00F9E187 /* Utils */,
 				DED4FA6A25BC911D001384FE /* Views */,
@@ -195,6 +258,26 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		EAC55D65268318FD007A7D05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAC55D66268318FD007A7D05 /* WidgetKit.framework */,
+				EAC55D68268318FD007A7D05 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EAC55D6A268318FD007A7D05 /* H21Widget */ = {
+			isa = PBXGroup;
+			children = (
+				EAC55D6B268318FD007A7D05 /* H21Widget.swift */,
+				EAC55D6D268318FD007A7D05 /* H21Widget.intentdefinition */,
+				EAC55D6E268318FE007A7D05 /* Assets.xcassets */,
+				EAC55D70268318FE007A7D05 /* Info.plist */,
+			);
+			path = H21Widget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -205,10 +288,12 @@
 				DE99F0802590F25D00FC99EC /* Sources */,
 				DE99F0812590F25D00FC99EC /* Frameworks */,
 				DE99F0822590F25D00FC99EC /* Resources */,
+				EAC55D79268318FE007A7D05 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EAC55D74268318FE007A7D05 /* PBXTargetDependency */,
 			);
 			name = H21;
 			productName = H21;
@@ -251,13 +336,30 @@
 			productReference = DE99F0A02590F26000FC99EC /* H21UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		EAC55D63268318FD007A7D05 /* H21WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAC55D76268318FE007A7D05 /* Build configuration list for PBXNativeTarget "H21WidgetExtension" */;
+			buildPhases = (
+				EAC55D60268318FD007A7D05 /* Sources */,
+				EAC55D61268318FD007A7D05 /* Frameworks */,
+				EAC55D62268318FD007A7D05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = H21WidgetExtension;
+			productName = H21WidgetExtension;
+			productReference = EAC55D64268318FD007A7D05 /* H21WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DE99F07C2590F25D00FC99EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					DE99F0832590F25D00FC99EC = {
@@ -270,6 +372,9 @@
 					DE99F09F2590F26000FC99EC = {
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = DE99F0832590F25D00FC99EC;
+					};
+					EAC55D63268318FD007A7D05 = {
+						CreatedOnToolsVersion = 12.5;
 					};
 				};
 			};
@@ -289,6 +394,7 @@
 				DE99F0832590F25D00FC99EC /* H21 */,
 				DE99F0942590F26000FC99EC /* H21Tests */,
 				DE99F09F2590F26000FC99EC /* H21UITests */,
+				EAC55D63268318FD007A7D05 /* H21WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -317,6 +423,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAC55D62268318FD007A7D05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAC55D6F268318FE007A7D05 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -332,6 +446,7 @@
 				EA618798265DA0170046A22D /* Notifications.swift in Sources */,
 				DE99F0BD25910F9100FC99EC /* AddHabit.swift in Sources */,
 				DE8897CA25CF433900A6AC55 /* ServiceLocator.swift in Sources */,
+				EAC55D72268318FE007A7D05 /* H21Widget.intentdefinition in Sources */,
 				EA618796265A8C5C0046A22D /* Calendar.swift in Sources */,
 				DE99F0C2259110B600FC99EC /* HabitDetails.swift in Sources */,
 				DE519A7D25C8A00A00F9E187 /* Habit.swift in Sources */,
@@ -356,6 +471,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAC55D60268318FD007A7D05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAC55D7A26831AAD007A7D05 /* Habit.swift in Sources */,
+				EAC55D7E26832C3E007A7D05 /* Date.swift in Sources */,
+				EAC55D7F26832C42007A7D05 /* Color.swift in Sources */,
+				EAC55D8126832C48007A7D05 /* Notifications.swift in Sources */,
+				EAC55D8326832C58007A7D05 /* Checkbox.swift in Sources */,
+				EAC55D7D2683270D007A7D05 /* Habits.swift in Sources */,
+				EAC55D8026832C45007A7D05 /* ServiceLocator.swift in Sources */,
+				EAC55D8426832C5B007A7D05 /* Calendar.swift in Sources */,
+				EAC55D71268318FE007A7D05 /* H21Widget.intentdefinition in Sources */,
+				EAC55D6C268318FD007A7D05 /* H21Widget.swift in Sources */,
+				EAC55D7B26831AB3007A7D05 /* HabitsViewModel.swift in Sources */,
+				EAC55D8526832C78007A7D05 /* AddHabit.swift in Sources */,
+				EAC55D8226832C4B007A7D05 /* FilePersister.swift in Sources */,
+				EAC55D8626832C80007A7D05 /* HabitDetails.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -368,6 +504,11 @@
 			isa = PBXTargetDependency;
 			target = DE99F0832590F25D00FC99EC /* H21 */;
 			targetProxy = DE99F0A12590F26000FC99EC /* PBXContainerItemProxy */;
+		};
+		EAC55D74268318FE007A7D05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAC55D63268318FD007A7D05 /* H21WidgetExtension */;
+			targetProxy = EAC55D73268318FE007A7D05 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -491,8 +632,10 @@
 		DE99F0AA2590F26100FC99EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = H21/H21.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"H21/Preview Content\"";
 				DEVELOPMENT_TEAM = 8F6Z4VKPC5;
@@ -513,8 +656,10 @@
 		DE99F0AB2590F26100FC99EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = H21/H21.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"H21/Preview Content\"";
 				DEVELOPMENT_TEAM = 8F6Z4VKPC5;
@@ -616,6 +761,52 @@
 			};
 			name = Release;
 		};
+		EAC55D77268318FE007A7D05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = H21WidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8F6Z4VKPC5;
+				INFOPLIST_FILE = H21Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fox.H21.H21Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EAC55D78268318FE007A7D05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = H21WidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8F6Z4VKPC5;
+				INFOPLIST_FILE = H21Widget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fox.H21.H21Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -651,6 +842,15 @@
 			buildConfigurations = (
 				DE99F0B02590F26100FC99EC /* Debug */,
 				DE99F0B12590F26100FC99EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAC55D76268318FE007A7D05 /* Build configuration list for PBXNativeTarget "H21WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAC55D77268318FE007A7D05 /* Debug */,
+				EAC55D78268318FE007A7D05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

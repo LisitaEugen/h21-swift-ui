@@ -76,10 +76,14 @@ class HabitsViewModel: ObservableObject {
 
 
 extension HabitsViewModel {
-    func loadHabits() {
-        persister?.load() { habits in
+    func loadHabits(_ completion: @escaping () -> Void) {
+        
+        func onLoad(_ habits: [Habit]) {
             self.habits = habits
+            completion()
         }
+        
+        persister?.load(onLoad(_:))
     }
     
     func saveHabits() {
