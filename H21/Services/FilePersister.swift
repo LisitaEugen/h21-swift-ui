@@ -14,13 +14,7 @@ protocol Persister {
 
 class FilePersister: Persister {
     private static var documenrFolder: URL {
-//        do {
-//            return try //FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.fox.H21")!
-            // containerURLForSecurityApplicationGroupIdentifier
-//        } catch {
-//            fatalError("Cannot find docs folder!!!")
-//        }
+        FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.fox.H21")!
     }
     private static var fileUrl: URL {
         return documenrFolder.appendingPathComponent("persisted.data")

@@ -51,20 +51,6 @@ extension Habit {
         var reminderTime: Date = Date()
     }
     
-//    struct Achievements {
-//        static func enabledAchievements(forHabit habit: Habit) -> [Bool]{
-//            var enabledAchievements = [Bool]()
-//
-//            for date in Date.currentRangeDates {
-//                let enabled = habit.isAchievementEnabled(forDate: date)
-//                enabledAchievements.append(enabled)
-//            }
-//
-//            return enabledAchievements
-//        }
-//
-//    }
-    
     var data: Data {
         return Data(title: title, motivation: motivation, color: color, reminderOn: reminderTime != nil, reminderTime: reminderTime ?? Date())
     }
