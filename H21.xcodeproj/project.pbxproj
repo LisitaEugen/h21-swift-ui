@@ -195,15 +195,13 @@
 		DE99F0862590F25D00FC99EC /* H21 */ = {
 			isa = PBXGroup;
 			children = (
+				EAC55D8726844E6A007A7D05 /* Screens */,
 				EAC55D5F268315FE007A7D05 /* H21.entitlements */,
 				DE8897CE25CF43EF00A6AC55 /* Services */,
 				DE519A7025C89FBC00F9E187 /* Utils */,
 				DED4FA6A25BC911D001384FE /* Views */,
 				DE99F0B82590F71900FC99EC /* Model */,
 				DE99F0872590F25D00FC99EC /* H21App.swift */,
-				DE99F0892590F25D00FC99EC /* Habits.swift */,
-				DE99F0BC25910F9100FC99EC /* AddHabit.swift */,
-				DE99F0C1259110B600FC99EC /* HabitDetails.swift */,
 				DE99F08B2590F26000FC99EC /* Assets.xcassets */,
 				DE99F0902590F26000FC99EC /* Info.plist */,
 				DE99F08D2590F26000FC99EC /* Preview Content */,
@@ -272,6 +270,16 @@
 				EAC55D70268318FE007A7D05 /* Info.plist */,
 			);
 			path = H21Widget;
+			sourceTree = "<group>";
+		};
+		EAC55D8726844E6A007A7D05 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DE99F0892590F25D00FC99EC /* Habits.swift */,
+				DE99F0BC25910F9100FC99EC /* AddHabit.swift */,
+				DE99F0C1259110B600FC99EC /* HabitDetails.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
