@@ -9,11 +9,9 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-
 struct HabitEntry: TimelineEntry {
     let date = Date()
     let habits: [Habit]
-    
 }
 
 struct Provider: TimelineProvider {
@@ -30,47 +28,17 @@ struct Provider: TimelineProvider {
         
         let viewModel = HabitsViewModel()
         viewModel.loadHabits() {
-            WidgetCenter.shared.reloadAllTimelines()
+            print("Habits loaded in widget!")
+            
+            let reloadAfterDate = Calendar.current.date(byAdding: .hour, value: 1, to: Date())!
+            
+            let entries = [HabitEntry(habits: viewModel.habits)]
+            let timeline = Timeline(entries: entries, policy: .after(reloadAfterDate))
+            completion(timeline)
         }
-        
-        let entries = [HabitEntry(habits: viewModel.habits)]
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
-
     }
 }
 
-//struct Provider: IntentTimelineProvider {
-//    func placeholder(in context: Context) -> SimpleEntry {
-//        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
-//    }
-//
-//    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-//        let entry = SimpleEntry(date: Date(), configuration: configuration)
-//        completion(entry)
-//    }
-//
-//    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-//        var entries: [SimpleEntry] = []
-//
-//        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-//        let currentDate = Date()
-//        for hourOffset in 0 ..< 5 {
-//            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-//            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-//            entries.append(entry)
-//        }
-//
-//        let timeline = Timeline(entries: entries, policy: .atEnd)
-//        completion(timeline)
-//    }
-//}
-//
-//struct SimpleEntry: TimelineEntry {
-//    let date: Date
-//    let configuration: ConfigurationIntent
-//}
-//
 struct HabitRowShort: View {
     @EnvironmentObject var habitsModel: HabitsViewModel
     var habit: Habit
@@ -139,18 +107,19 @@ struct HabitRowLarge: View {
 struct H21WidgetEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) var family
-
+    
     @ViewBuilder
     var body: some View {
         switch family {
         case .systemMedium:
             VStack{
                 ForEach(entry.habits, id: \.id) { habit in
-                    HabitRowShort(habit: entry.habits[0]).environmentObject(HabitsViewModel())
-//                        .padding()
+                    HabitRowShort(habit: habit).environmentObject(HabitsViewModel())
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 }
                 Spacer()
             }
+            .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             
         case .systemLarge:
             VStack{
@@ -162,24 +131,28 @@ struct H21WidgetEntryView : View {
                 }
                 Spacer()
             }
-            .padding()
+            .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
         default:
             HabitRowShort(habit: entry.habits[0]).environmentObject(HabitsViewModel())
         }
-        
     }
 }
 
 @main
 struct H21Widget: Widget {
     let kind: String = "H21Widget"
-
+    
+    init() {
+        ServiceLocator.shared.addService(service: FilePersister() as Persister)
+    }
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             H21WidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("H21 Widget")
+        .description("This widget helps you traking first 3 habits in you list")
+        .supportedFamilies([.systemMedium, .systemLarge])
     }
 }
 
@@ -188,13 +161,13 @@ struct H21Widget_Previews: PreviewProvider {
         Group {
             H21WidgetEntryView(entry: HabitEntry(habits: [Habit.demoHabit, Habit.demoHabit, Habit.demoHabit,])
             )
-                .previewContext(WidgetPreviewContext(family: .systemLarge))
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
         }
         Group {
             H21WidgetEntryView(entry: HabitEntry(habits: [Habit.demoHabit, Habit.demoHabit, Habit.demoHabit,])
             )
-                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
         }
-
+        
     }
 }
