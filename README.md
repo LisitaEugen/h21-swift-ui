@@ -1,13 +1,16 @@
 # h21-swift-ui
 Habits management app. 
 
-Allows users to create habits they want to develop, 
-track progress and also set a reminder to keep focus on certain habits.
+Allows users to:
+- create/ delete habits they want to develop
+- add reminder which will display a notification with motivation
+- track the progress of a habit
+- track up to three habits in a widget
 
-NOTE: Widgets implementation is WIP [on this branch](https://github.com/LisitaEugen/h21-swift-ui/tree/add-widget) 
 
 ![image info](./screenshots/Habits.png) ![image info](./screenshots/AddHabit.png)
 
 ![image info](./screenshots/HabitDetails.png) ![image info](./screenshots/EditHabit.png)
 
-![image info](./screenshots/Notificaitons.PNG) ![image info](./screenshots/widgets.png)
+![image info](./screenshots/Notificaitons.PNG) 
+![image info](./screenshots/widget1.png) ![image info](./screenshots/widget2.png)
