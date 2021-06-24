@@ -28,8 +28,6 @@
 		EAC55D69268318FD007A7D05 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC55D68268318FD007A7D05 /* SwiftUI.framework */; };
 		EAC55D6C268318FD007A7D05 /* H21Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC55D6B268318FD007A7D05 /* H21Widget.swift */; };
 		EAC55D6F268318FE007A7D05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAC55D6E268318FE007A7D05 /* Assets.xcassets */; };
-		EAC55D71268318FE007A7D05 /* H21Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EAC55D6D268318FD007A7D05 /* H21Widget.intentdefinition */; };
-		EAC55D72268318FE007A7D05 /* H21Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = EAC55D6D268318FD007A7D05 /* H21Widget.intentdefinition */; };
 		EAC55D75268318FE007A7D05 /* H21WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EAC55D64268318FD007A7D05 /* H21WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EAC55D7A26831AAD007A7D05 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A7825C8A00A00F9E187 /* Habit.swift */; };
 		EAC55D7B26831AB3007A7D05 /* HabitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519A8925C8B3EC00F9E187 /* HabitsViewModel.swift */; };
@@ -112,7 +110,6 @@
 		EAC55D66268318FD007A7D05 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EAC55D68268318FD007A7D05 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		EAC55D6B268318FD007A7D05 /* H21Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H21Widget.swift; sourceTree = "<group>"; };
-		EAC55D6D268318FD007A7D05 /* H21Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = H21Widget.intentdefinition; sourceTree = "<group>"; };
 		EAC55D6E268318FE007A7D05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAC55D70268318FE007A7D05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAC55D7C26831B5B007A7D05 /* H21WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = H21WidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -271,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				EAC55D6B268318FD007A7D05 /* H21Widget.swift */,
-				EAC55D6D268318FD007A7D05 /* H21Widget.intentdefinition */,
 				EAC55D6E268318FE007A7D05 /* Assets.xcassets */,
 				EAC55D70268318FE007A7D05 /* Info.plist */,
 			);
@@ -446,7 +442,6 @@
 				EA618798265DA0170046A22D /* Notifications.swift in Sources */,
 				DE99F0BD25910F9100FC99EC /* AddHabit.swift in Sources */,
 				DE8897CA25CF433900A6AC55 /* ServiceLocator.swift in Sources */,
-				EAC55D72268318FE007A7D05 /* H21Widget.intentdefinition in Sources */,
 				EA618796265A8C5C0046A22D /* Calendar.swift in Sources */,
 				DE99F0C2259110B600FC99EC /* HabitDetails.swift in Sources */,
 				DE519A7D25C8A00A00F9E187 /* Habit.swift in Sources */,
@@ -483,7 +478,6 @@
 				EAC55D7D2683270D007A7D05 /* Habits.swift in Sources */,
 				EAC55D8026832C45007A7D05 /* ServiceLocator.swift in Sources */,
 				EAC55D8426832C5B007A7D05 /* Calendar.swift in Sources */,
-				EAC55D71268318FE007A7D05 /* H21Widget.intentdefinition in Sources */,
 				EAC55D6C268318FD007A7D05 /* H21Widget.swift in Sources */,
 				EAC55D7B26831AB3007A7D05 /* HabitsViewModel.swift in Sources */,
 				EAC55D8526832C78007A7D05 /* AddHabit.swift in Sources */,
