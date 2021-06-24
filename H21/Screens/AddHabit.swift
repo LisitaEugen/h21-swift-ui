@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddHabit_Screen: View {
     @Binding var habitData: Habit.Data
-        
+    
     var body: some View {
         List {
             Section(header: Text("Habit info")) {

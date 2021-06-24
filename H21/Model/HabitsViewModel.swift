@@ -20,15 +20,12 @@ enum Progress {
             return ("Needs improvement","arrow.down.forward.circle.fill")
         }
     }
-    
-    
 }
 
 class HabitsViewModel: ObservableObject {
     @Published var habits: [Habit] = Habit.data
     var persister: Persister? = ServiceLocator.shared.getService()
     var notifications: Notifications? = ServiceLocator.shared.getService()
-    
     
     func progress(for habit: Habit) -> Progress {
         // if in last 2 months > 100% from 21 -> rocking 🚀 😍 👏 🐆 􀲯 􀑓  􀱀 􀱂 􀂄
@@ -62,7 +59,6 @@ class HabitsViewModel: ObservableObject {
         } else {
             progress = .needsImprovement
         }
-        
         
         return progress
     }

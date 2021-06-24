@@ -36,16 +36,16 @@ struct H21App: App {
 
 extension H21App {
     func resetUITableViewAppearance() {
-//        UITableView.appearance().separatorStyle = .none
-//        UITableView.appearance().separatorInset = .zero
-//        UITableView.appearance().showsHorizontalScrollIndicator = false
-//        UITableView.appearance().showsVerticalScrollIndicator = false
-//        UITableView.appearance().layoutMargins = .zero
-//        UITableView.appearance().contentInset = .zero
-//        UITableView.appearance().contentOffset = .zero
+        //        UITableView.appearance().separatorStyle = .none
+        //        UITableView.appearance().separatorInset = .zero
+        //        UITableView.appearance().showsHorizontalScrollIndicator = false
+        //        UITableView.appearance().showsVerticalScrollIndicator = false
+        //        UITableView.appearance().layoutMargins = .zero
+        //        UITableView.appearance().contentInset = .zero
+        //        UITableView.appearance().contentOffset = .zero
         UITableViewCell.appearance().selectionStyle = .none
         UITableViewCell.appearance().separatorInset = .zero
         UITableViewCell.appearance().layoutMargins = .zero
-//        UITableViewHeaderFooterView.appearance().tintColor = .clear
+        //        UITableViewHeaderFooterView.appearance().tintColor = .clear
     }
 }

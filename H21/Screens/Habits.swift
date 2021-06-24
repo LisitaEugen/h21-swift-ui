@@ -148,14 +148,14 @@ struct Days: View {
 struct Badge<Content:View>: View {
     var color: Color
     let content: Content
-
+    
     init(color: Color, @ViewBuilder content: () -> Content) {
         self.color = color
         self.content = content()
     }
-
+    
     var body: some View {
-            content
+        content
             .font(.system(size: 15, weight: .bold))
             .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
             .foregroundColor(Color.white)
